@@ -1,9 +1,11 @@
 # 🎄 react-hooks-ogiri
 
-|<img src="./logo.png" width="33%"><br/>Advent calendar of 2018.<br/>This is a showreel using a React Hooks API.|
+|<img src="./logo.png" width="33%">|
 |:-:|
 
-# 23 examples showreel
+Advent calendar of 2018.This is a showreel using a React Hooks API.
+
+# 23 GUI Examples showreel
 
 |ripple-button|toggle-switch|photo-carousel|drawer-menu|
 |:-:|:-:|:-:|:-:|
