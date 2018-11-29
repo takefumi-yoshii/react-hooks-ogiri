@@ -1,0 +1,60 @@
+{
+  "name": "react-hooks-sandbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.dena.jp:takefumi-yoshii/react-hooks-sandbox.git",
+  "author": "takefumi-yoshii <takefumi.yoshii@dena.jp>",
+  "license": "MIT",
+  "scripts": {
+    "1203": "parcel apps/ripple-button/index.html watch",
+    "1204": "parcel apps/toggle-switch/index.html watch",
+    "1205": "parcel apps/photo-carousel/index.html watch",
+    "1206": "parcel apps/drawer-menu/index.html watch",
+    "1207": "parcel apps/pallalax-section/index.html watch",
+    "1208": "parcel apps/pallalax-hero/index.html watch",
+    "1209": "parcel apps/stickey-effects/index.html watch",
+    "1210": "parcel apps/stickey-image-loader/index.html watch",
+    "1211": "parcel apps/swipe-item-opener/index.html watch",
+    "1212": "parcel apps/swipe-pager/index.html watch",
+    "1213": "parcel apps/swipe-flipper/index.html watch",
+    "1214": "parcel apps/pull-fetcher/index.html watch",
+    "1215": "parcel apps/pie-chart/index.html watch",
+    "1216": "parcel apps/radar-chart/index.html watch",
+    "1217": "parcel apps/line-chart/index.html watch",
+    "1218": "parcel apps/bar-chart/index.html watch",
+    "1219": "parcel apps/google-map/index.html watch",
+    "1220": "parcel apps/canvas-painter/index.html watch",
+    "1221": "parcel apps/camera-capture/index.html watch",
+    "1222": "parcel apps/chat-board/index.html watch",
+    "1223": "parcel apps/modal-queue/index.html watch",
+    "1224": "parcel apps/drag-drop-section/index.html watch",
+    "1225": "parcel apps/photo-album/index.html watch",
+    "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.1",
+    "lodash.throttle": "^4.1.1",
+    "react": "16.7.0-alpha.0",
+    "react-async-script": "^1.0.0",
+    "react-dom": "16.7.0-alpha.0",
+    "react-svg-inline": "^2.1.1",
+    "styled-components": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/googlemaps": "^3.30.16",
+    "@types/lodash.merge": "^4.6.4",
+    "@types/lodash.throttle": "^4.1.4",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "@types/styled-components": "^4.0.3",
+    "parcel-bundler": "^1.10.3",
+    "parcel-plugin-inlinesvg": "^0.0.14",
+    "prettier": "^1.14.3",
+    "typescript": "^3.1.6"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 60
+  }
+}
