@@ -1,7 +1,7 @@
 # 🎄 react-hooks-ogiri
 
-<div style='text-align: center'>
-<p><img src='./logo.png' width="33%"/></p>
+<div style="text-align: center;">
+<p><img src="./logo.png" width="33%"/></p>
 <p>Advent calendar of 2018. This is a showreel using a reaction hook.</p>
 </div>
 
