@@ -1,7 +1,6 @@
-|<h2>🎄 React Hooks Ogiri</h2>|
-|:-:|
 |<img src="./logo.png" width="50%">|
-|Advent calendar of 2018.This is a showreel using a React Hooks API.|
+|:-:|
+|🎄 Advent calendar of 2018.This is a showreel using a React Hooks API.|
 
 |SUN|MON|TUE|WED|THU|FRI|SAT|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
