@@ -10,7 +10,6 @@ import Section2 from './section2'
 type Props = {
   className?: string
 }
-
 // ______________________________________________________
 //
 // @ View

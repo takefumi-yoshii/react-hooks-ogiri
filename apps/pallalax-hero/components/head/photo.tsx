@@ -6,15 +6,15 @@ import styled from 'styled-components'
 //
 // @ Types
 
-type ContainerProps = {
-  isHide: boolean
-  imgSrc: string
-  children?: React.ReactNode
-}
 type Props = {
   imgSrc: string
   nodeStyle: CSSProperties
   className?: string
+}
+type ContainerProps = {
+  isHide: boolean
+  imgSrc: string
+  children?: React.ReactNode
 }
 // ______________________________________________________
 //

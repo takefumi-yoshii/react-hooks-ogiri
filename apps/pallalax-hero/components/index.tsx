@@ -18,21 +18,19 @@ type Props = {
 // @ View
 
 const View = (props: Props) => (
-  <>
-    <Provider>
-      <Wrapper className={props.className}>
-        <Head
-          title={'Entry Title'}
-          subTitle={'subTitle'}
-          avatorImgSrc={require('../assets/avator.jpg')}
-          bgImgSrc={require('../assets/hero.jpg')}
-          bgColor={'#004c94'}
-        />
-      </Wrapper>
-    </Provider>
+  <Provider>
+    <Wrapper className={props.className}>
+      <Head
+        title={'Entry Title'}
+        subTitle={'subTitle'}
+        avatorImgSrc={require('../assets/avator.jpg')}
+        bgImgSrc={require('../assets/hero.jpg')}
+        bgColor={'#004c94'}
+      />
+    </Wrapper>
     <Body />
     <Footer />
-  </>
+  </Provider>
 )
 // ______________________________________________________
 //
