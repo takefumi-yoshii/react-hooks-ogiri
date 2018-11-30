@@ -28,7 +28,7 @@ const View = (props: Props) => {
       <div className="pagenate">
         <Pagenate
           current={current}
-          color='light'
+          color="light"
           items={Images.map((p, i) => i)}
         />
       </div>

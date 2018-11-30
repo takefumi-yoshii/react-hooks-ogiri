@@ -1,5 +1,5 @@
 import * as React from 'react'
-import DrillDown from './drillDown'
+import DrillDown from './drillDown/index'
 // @ts-ignore
 import SVGInline from 'react-svg-inline'
 

@@ -38,7 +38,7 @@ const View = (props: Props) => {
       <div className="pagenate">
         <Pagenate
           current={current}
-          color='dark'
+          color="dark"
           items={Pages.map((p, i) => i)}
         />
       </div>

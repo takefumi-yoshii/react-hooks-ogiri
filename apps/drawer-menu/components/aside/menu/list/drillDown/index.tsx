@@ -2,6 +2,8 @@ import * as React from 'react'
 import { useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import { useDrillDown } from './useDrillDown'
+import Head from './head'
+import Item from './item'
 
 // ______________________________________________________
 //
@@ -13,7 +15,7 @@ type Item = {
 }
 type Props = {
   title: string
-  icon: React.ReactChild
+  icon: JSX.Element
   items?: Item[]
   onClickTitle?: () => void
   className?: string
@@ -35,17 +37,21 @@ const View = (props: Props) => {
   )
   return (
     <div className={props.className}>
-      <h3 onClick={handleClickTitle}>
-        <span className="icon">{props.icon}</span>
-        <span className="title">{props.title}</span>
-      </h3>
+      <Head
+        title={props.title}
+        icon={props.icon}
+        onClick={handleClickTitle}
+      />
       {props.items !== undefined && (
-        <ul style={style} ref={ref}>
+        <ul ref={ref} style={style}>
           {props.items.map((item, index) => (
-            <li key={index} onClick={item.onClick}>
-              {item.title}
-            </li>
+            <Item
+              key={index}
+              onClick={item.onClick}
+              title={item.title}
+            />
           ))}
+          >
         </ul>
       )}
     </div>
@@ -57,33 +63,7 @@ const View = (props: Props) => {
 
 export default styled(View)`
   color: #fff;
-  > h3 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 74px;
-    padding: 0 14px;
-    > .title {
-      margin-left: 14px;
-      font-weight: normal;
-      font-size: 1rem;
-    }
-  }
   > ul {
     overflow: hidden;
-    li {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      height: 30px;
-      padding: 20px;
-      font-size: 0.8rem;
-      &:first-child {
-        border-top: 1px dashed #63656d;
-      }
-      &:nth-child(even) {
-        background: rgba(255, 255, 255, 0.03);
-      }
-    }
   }
 `
