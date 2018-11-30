@@ -19,7 +19,9 @@ type Props = {
 const View = (props: Props) => (
   <div className={props.className}>
     <button onClick={props.handlePlay}>
-    {props.isEnablePlayQueue ? 'PlayModalQueue' : '...waiting register'}
+      {props.isEnablePlayQueue
+        ? 'PlayModalQueue'
+        : '...waiting register'}
     </button>
     <p className="counter">
       Modal queue count : {props.queueCount}
@@ -40,10 +42,12 @@ export default styled(View)`
     padding: 12px 40px;
     color: #fff;
     border-radius: 5px;
-    background-color: ${props => props.isEnablePlayQueue ? styles.darkBlue : '#ccc'};
+    background-color: ${props =>
+      props.isEnablePlayQueue ? styles.darkBlue : '#ccc'};
     outline: none;
     transition-duration: 0.2s;
-    pointer-events: ${props => props.isEnablePlayQueue ? 'inherit' : 'none'};
+    pointer-events: ${props =>
+      props.isEnablePlayQueue ? 'inherit' : 'none'};
     &:hover {
       background-color: ${styles.darkBlueGray};
     }

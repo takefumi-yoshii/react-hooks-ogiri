@@ -46,7 +46,10 @@ export default (props: Props) =>
             <Circle
               center={props.center}
               stepCount={props.stepCount}
-              radius={(props.radius * index) / (props.stepCount - 1)}
+              radius={
+                (props.radius * index) /
+                (props.stepCount - 1)
+              }
               isLast={index === props.stepCount - 1}
             />
           </g>

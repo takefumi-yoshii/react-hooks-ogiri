@@ -47,4 +47,3 @@ const StyledView = styled(View)`
   ${styles.page} background: #cff;
 `
 export default () => <StyledView />
-

@@ -37,7 +37,11 @@ export default (props: Props) =>
     () => (
       <g>
         {props.points.map((point, index) => (
-          <Line key={index} center={props.center} point={point} />
+          <Line
+            key={index}
+            center={props.center}
+            point={point}
+          />
         ))}
       </g>
     ),

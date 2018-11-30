@@ -59,9 +59,7 @@ export default (props: ContainerProps) => {
     [isCurrent]
   )
   return useMemo(
-    () => (
-      <StyledView index={props.index} style={style}/>
-    ),
+    () => <StyledView index={props.index} style={style} />,
     [style]
   )
 }

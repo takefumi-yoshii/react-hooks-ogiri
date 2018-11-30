@@ -89,23 +89,20 @@ const usePhotoCarousel = (props: Props) => {
       options.transitionDuration
     ]
   )
-  useEffect(
-    () => {
-      const handleResize = () => {
-        if (props.ref.current === null) return
-        const {
-          width,
-          height
-        } = props.ref.current.getBoundingClientRect()
-        update(_state => ({ ..._state, width, height }))
-      }
-      handleResize()
-      window.addEventListener('resize', handleResize)
-      return () =>
-        window.removeEventListener('resize', handleResize)
-    },
-    [props.ref, options.imageRatio]
-  )
+  useEffect(() => {
+    const handleResize = () => {
+      if (props.ref.current === null) return
+      const {
+        width,
+        height
+      } = props.ref.current.getBoundingClientRect()
+      update(_state => ({ ..._state, width, height }))
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () =>
+      window.removeEventListener('resize', handleResize)
+  }, [])
   useEffect(
     () => {
       const id = setInterval(() => {
@@ -119,11 +116,7 @@ const usePhotoCarousel = (props: Props) => {
       }, options.transitionInterval)
       return () => clearInterval(id)
     },
-    [
-      state.current,
-      options.transitionInterval,
-      options.transitionDuration
-    ]
+    [options.transitionInterval]
   )
   return {
     current: state.current,
