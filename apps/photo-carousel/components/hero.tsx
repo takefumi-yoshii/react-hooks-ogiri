@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+import Pagenate from '../../components/pagenate'
 import PhotoCarousel from './photoCarousel/index'
-import Pagenate from './pagenate'
 import Images from '../assets/index'
 
 // ______________________________________________________
@@ -28,6 +28,7 @@ const View = (props: Props) => {
       <div className="pagenate">
         <Pagenate
           current={current}
+          color='light'
           items={Images.map((p, i) => i)}
         />
       </div>

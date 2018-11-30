@@ -1,12 +1,24 @@
 import * as React from 'react'
+import { useMemo } from 'react'
 import styled from 'styled-components'
 
 // ______________________________________________________
 //
 // @ Types
 
+const color = {
+  dark: {
+    default: 'rgba(0, 0, 0, 0.2)',
+    current: 'rgba(0, 0, 0, 0.6)'
+  },
+  light: {
+    default: 'rgba(255, 255, 255, 0.2)',
+    current: 'rgba(255, 255, 255, 0.6)'
+  }
+}
 type Props = {
   items: number[]
+  color: keyof typeof color
   current?: number
   className?: string
 }
@@ -14,13 +26,18 @@ type Props = {
 //
 // @ View
 
+const Figure = (props: { isCurrent: boolean }) =>
+  useMemo(
+    () => (
+      <span className={props.isCurrent ? 'current' : ''} />
+    ),
+    [props.isCurrent]
+  )
+
 const View = (props: Props) => (
   <div className={props.className}>
     {props.items.map(i => (
-      <span
-        key={i}
-        className={props.current === i ? 'current' : ''}
-      />
+      <Figure key={i} isCurrent={props.current === i} />
     ))}
   </div>
 )
@@ -41,9 +58,15 @@ export default styled(View)`
     height: 5px;
     border-radius: 5px;
     margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: ${props =>
+      props.color === 'dark'
+        ? color.dark.default
+        : color.light.default};
   }
   > .current {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: ${props =>
+      props.color === 'dark'
+        ? color.dark.current
+        : color.light.current};
   }
 `
