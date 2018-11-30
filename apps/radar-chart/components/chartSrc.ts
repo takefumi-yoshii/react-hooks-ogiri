@@ -1,4 +1,4 @@
-import { Record } from '../records'
+import { Record } from './records'
 
 // ______________________________________________________
 //
@@ -24,13 +24,13 @@ type ItemPoint = {
 //
 // @ Helper
 
-const getPoints = (
+const getChartSrc = (
   records: Record[],
   max: number,
   size: number,
   center: number,
   progress: number,
-  itemDistance: number
+  itemLabelIeject: number
 ) => {
   const linesPoints: LinePoint[] = records.map(
     (record, index, src) => {
@@ -54,7 +54,7 @@ const getPoints = (
   const itemsPoints: ItemPoint[] = records.map(
     (record, index, src) => {
       const angle = (Math.PI * 2 * index) / src.length
-      const dis = size * 0.5 + itemDistance
+      const dis = size * 0.5 + itemLabelIeject
       const x = center + Math.cos(angle - Math.PI / 2) * dis
       const y = center + Math.sin(angle - Math.PI / 2) * dis
       return {
@@ -72,4 +72,4 @@ const getPoints = (
 //
 // @ exports
 
-export { getPoints, LinePoint, RadarPoint, ItemPoint }
+export { getChartSrc, LinePoint, RadarPoint, ItemPoint }

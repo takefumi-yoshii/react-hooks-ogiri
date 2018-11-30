@@ -1,19 +1,20 @@
 import * as React from 'react'
-import { RadarPoint } from './points'
+import { useContext, useMemo } from 'react'
+import { RadarChartContext } from '../context'
+import { RadarPoint } from '../chartSrc'
 
 // ______________________________________________________
-//.
+//
 // @ Types
 
 type Props = {
   points: RadarPoint[]
 }
-
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => (
+const View = (props: Props) => (
   <polygon
     points={props.points
       .map(point => `${point.x},${point.y}`)
@@ -23,3 +24,13 @@ export default (props: Props) => (
     fill={`rgba(20,50,80,.3)`}
   />
 )
+// ______________________________________________________
+//
+// @ Container
+
+export default () => {
+  const { radarPoints } = useContext(RadarChartContext)
+  return useMemo(() => <View points={radarPoints} />, [
+    radarPoints
+  ])
+}

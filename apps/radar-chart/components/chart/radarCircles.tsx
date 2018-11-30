@@ -1,5 +1,7 @@
 import * as React from 'react'
-import { RadarPoint } from './points'
+import { useContext, useMemo } from 'react'
+import { RadarChartContext } from '../context'
+import { RadarPoint } from '../chartSrc'
 
 // ______________________________________________________
 //
@@ -13,7 +15,7 @@ type Props = {
 //
 // @ View
 
-export default (props: Props) => (
+const View = (props: Props) => (
   <g>
     {props.points.map((point, index) => (
       <circle
@@ -28,3 +30,14 @@ export default (props: Props) => (
     ))}
   </g>
 )
+// ______________________________________________________
+//
+// @ Container
+
+export default () => {
+  const { radarPoints } = useContext(RadarChartContext)
+  return useMemo(
+    () => <View points={radarPoints} radius={6} />,
+    [radarPoints]
+  )
+}

@@ -1,18 +1,19 @@
 import * as React from 'react'
-import { useMemo } from 'react'
-import { LinePoint } from './points'
+import { useContext, useMemo } from 'react'
+import { RadarChartContext } from '../context'
+import { LinePoint } from '../chartSrc'
 
 // ______________________________________________________
 //
 // @ Types
 
-type Props = {
-  center: number
-  points: LinePoint[]
-}
 type LineProps = {
   center: number
   point: LinePoint
+}
+type Props = {
+  center: number
+  points: LinePoint[]
 }
 // ______________________________________________________
 //
@@ -28,22 +29,28 @@ const Line = (props: LineProps) => (
     strokeWidth="1"
   />
 )
+
+const View = (props: Props) => (
+  <g>
+    {props.points.map((point, index) => (
+      <Line
+        key={index}
+        center={props.center}
+        point={point}
+      />
+    ))}
+  </g>
+)
 // ______________________________________________________
 //
 // @ Container
 
-export default (props: Props) =>
-  useMemo(
-    () => (
-      <g>
-        {props.points.map((point, index) => (
-          <Line
-            key={index}
-            center={props.center}
-            point={point}
-          />
-        ))}
-      </g>
-    ),
-    [props.center]
+export default () => {
+  const { center, linesPoints } = useContext(
+    RadarChartContext
   )
+  return useMemo(
+    () => <View center={center} points={linesPoints} />,
+    [center]
+  )
+}

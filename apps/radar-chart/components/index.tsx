@@ -1,10 +1,12 @@
 import * as React from 'react'
-import { useState, useMemo, useRef } from 'react'
+import Provider from './provider'
 import styled from 'styled-components'
-import { getRecords } from './records'
-import { useProgress } from './useProgress'
-import { useWindowResize } from './useWindowResize'
 import Chart from './chart/index'
+import BgCircles from './chart/bgCircles'
+import BgLines from './chart/bgLines'
+import RadarPolygon from './chart/radarPolygon'
+import RadarCircles from './chart/radarCircles'
+import ItemTexts from './chart/itemTexts'
 
 // ______________________________________________________
 //
@@ -15,31 +17,19 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => {
-  const ref = useRef({} as HTMLDivElement)
-  const [resource] = useState(getRecords())
-  const padding = useMemo(() => 60, [])
-  const { progress } = useProgress()
-  const { size } = useWindowResize(() => {
-    if (ref.current === null) return 0
-    const { width } = ref.current.getBoundingClientRect()
-    return width - padding * 2
-  })
-  if (ref.current === null) return <div />
-  return (
-    <div className={props.className} ref={ref}>
-      {size !== 0 && (
-        <Chart
-          records={resource.records}
-          max={resource.max}
-          size={size}
-          padding={padding}
-          progress={progress}
-        />
-      )}
+const View = (props: Props) => (
+  <Provider>
+    <div className={props.className}>
+      <Chart>
+        <BgCircles />
+        <BgLines />
+        <RadarPolygon />
+        <RadarCircles />
+        <ItemTexts />
+      </Chart>
     </div>
-  )
-}
+  </Provider>
+)
 // ______________________________________________________
 //
 // @ StyledView

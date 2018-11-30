@@ -1,66 +1,40 @@
 import * as React from 'react'
-import { Record } from '../records'
-import { getPoints } from './points'
-import BgCircles from './bgCircles'
-import BgLines from './bgLines'
-import RadarPolygon from './radarPolygon'
-import RadarCircles from './radarCircles'
-import ItemTexts from './itemTexts'
+import { useContext, useMemo } from 'react'
+import { RadarChartContext } from '../context'
 
 // ______________________________________________________
 //
 // @ Types
 
 type Props = {
-  records: Record[]
-  max: number
-  size: number
-  padding: number
-  progress: number
+  rectSize: number
   className?: string
+  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
-  const rectSize = props.size + props.padding * 2
-  const center = rectSize * 0.5
-  const {
-    radarPoints,
-    linesPoints,
-    itemsPoints
-  } = getPoints(
-    props.records,
-    props.max,
-    props.size,
-    center,
-    props.progress,
-    15
-  )
-  return (
-    <div className={props.className}>
-      <svg
-        viewBox={`0 0 ${rectSize} ${rectSize}`}
-        width={rectSize}
-        height={rectSize}
-      >
-        <filter id="drop-shadow">
-          <feGaussianBlur stdDeviation="2" />
-        </filter>
-        <BgCircles
-          center={rectSize * 0.5}
-          stepCount={props.max}
-          radius={props.size * 0.5}
-        />
-        <BgLines
-          center={rectSize * 0.5}
-          points={linesPoints}
-        />
-        <RadarPolygon points={radarPoints} />
-        <RadarCircles points={radarPoints} radius={6} />
-        <ItemTexts points={itemsPoints} />
-      </svg>
-    </div>
+const View = (props: Props) => (
+  <svg
+    viewBox={`0 0 ${props.rectSize} ${props.rectSize}`}
+    width={props.rectSize}
+    height={props.rectSize}
+  >
+    <filter id="drop-shadow">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+    {props.children}
+  </svg>
+)
+// ______________________________________________________
+//
+// @ Container
+
+export default (props: { children?: React.ReactNode }) => {
+  const { rectSize } = useContext(RadarChartContext)
+  return useMemo(
+    () => <View rectSize={rectSize}>{props.children}</View>,
+    [rectSize]
   )
 }
