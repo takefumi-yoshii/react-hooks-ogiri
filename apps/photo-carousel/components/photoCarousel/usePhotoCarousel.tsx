@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {
   useState,
   useEffect,
@@ -18,14 +17,14 @@ type State = {
   height: number
 }
 type Options = {
-  imagesSize: number
+  imagesCount: number
   imageRatio: number
   transitionInterval: number
   transitionDuration: number
 }
 type Props = {
   ref: RefObject<HTMLElement>
-  images: string[]
+  imagesCount: number
 } & Partial<Options>
 // ______________________________________________________
 //
@@ -37,7 +36,7 @@ const defaultState = (): State => ({
   height: 0
 })
 const defaultOptions = (): Options => ({
-  imagesSize: 0,
+  imagesCount: 0,
   imageRatio: 0.66,
   transitionInterval: 4000,
   transitionDuration: 400
@@ -51,36 +50,17 @@ const usePhotoCarousel = (props: Props) => {
   const options = useMemo(
     (): Options =>
       merge(defaultOptions(), {
-        imagesSize: props.images.length,
+        imagesCount: props.imagesCount,
         imageRatio: props.imageRatio,
         transitionInterval: props.transitionInterval,
         transitionDuration: props.transitionDuration
       }),
     [
-      props.images,
+      props.imagesCount,
       props.imageRatio,
       props.transitionInterval,
       props.transitionDuration
     ]
-  )
-  const renderItems = useMemo(
-    () =>
-      props.images.map((path, index) => (
-        <p
-          key={index}
-          style={{
-            width: `${state.width}px`,
-            height: `${state.height}px`,
-            position: 'absolute' as 'absolute',
-            top: 0,
-            left: `${state.width * index}px`,
-            backgroundSize: 'cover',
-            backgroundImage: `url(${path})`,
-            backgroundPosition: 'center'
-          }}
-        />
-      )),
-    [props.images, state.width, state.height]
   )
   const nodeStyle = useMemo(
     () => ({
@@ -93,7 +73,7 @@ const usePhotoCarousel = (props: Props) => {
   )
   const containerStyle = useMemo(
     () => ({
-      width: `${options.imagesSize * 100}%`,
+      width: `${options.imagesCount * 100}%`,
       height: `${state.height}px`,
       position: 'absolute' as 'absolute',
       top: 0,
@@ -102,7 +82,7 @@ const usePhotoCarousel = (props: Props) => {
         1000}s`
     }),
     [
-      options.imagesSize,
+      options.imagesCount,
       state.width,
       state.height,
       state.current,
@@ -131,7 +111,7 @@ const usePhotoCarousel = (props: Props) => {
       const id = setInterval(() => {
         update(_state => {
           const current =
-            _state.current === options.imagesSize - 1
+            _state.current === options.imagesCount - 1
               ? 0
               : _state.current + 1
           return { ..._state, current }
@@ -147,7 +127,8 @@ const usePhotoCarousel = (props: Props) => {
   )
   return {
     current: state.current,
-    renderItems,
+    itemWidth: state.width,
+    itemHeight: state.height,
     nodeStyle,
     containerStyle
   }

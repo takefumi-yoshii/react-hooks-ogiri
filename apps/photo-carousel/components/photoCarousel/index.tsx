@@ -5,6 +5,7 @@ import {
   usePhotoCarousel,
   Options
 } from './usePhotoCarousel'
+import Item from './item'
 
 // ______________________________________________________
 //
@@ -23,12 +24,13 @@ const View = (props: Props) => {
   const ref = useRef({} as HTMLDivElement)
   const {
     current,
-    renderItems,
+    itemWidth,
+    itemHeight,
     nodeStyle,
     containerStyle
   } = usePhotoCarousel({
     ref,
-    images: props.images,
+    imagesCount: props.images.length,
     imageRatio: props.imageRatio,
     transitionInterval: props.transitionInterval,
     transitionDuration: props.transitionDuration
@@ -46,10 +48,21 @@ const View = (props: Props) => {
       style={nodeStyle}
       ref={ref}
     >
-      <div style={containerStyle}>{renderItems}</div>
+      <div style={containerStyle}>
+        {props.images.map((path, index) => (
+          <Item
+            key={index}
+            index={index}
+            itemWidth={itemWidth}
+            itemHeight={itemHeight}
+            path={path}
+          />
+        ))}
+      </div>
     </div>
   )
 }
+
 // ______________________________________________________
 //
 // @ StyledView

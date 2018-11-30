@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import PhotoCarousel from './photoCarousel'
+import PhotoCarousel from './photoCarousel/index'
 import Pagenate from './pagenate'
 import Images from '../assets/index'
 
