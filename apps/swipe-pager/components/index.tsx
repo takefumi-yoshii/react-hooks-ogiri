@@ -22,18 +22,6 @@ const View = (props: Props) => {
         pages={Pages}
         threshold={100}
         animationDuration={200}
-        renderPrev={index => {
-          const Component = Pages[index]
-          return <Component />
-        }}
-        renderCurrent={index => {
-          const Component = Pages[index]
-          return <Component />
-        }}
-        renderNext={index => {
-          const Component = Pages[index]
-          return <Component />
-        }}
         onChangePage={setCurrent}
       />
       <div className="pagenate">

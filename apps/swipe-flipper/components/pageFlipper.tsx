@@ -10,13 +10,9 @@ import { usePageFlipper, Options } from './usePageFlipper'
 type Props = {
   pages: (() => JSX.Element)[]
   current?: number
-  renderPrev: (index: number) => JSX.Element
-  renderCurrent: (index: number) => JSX.Element
-  renderNext: (index: number) => JSX.Element
   onChangePage?: (current: number) => void
   className?: string
 } & Partial<Options>
-
 // ______________________________________________________
 //
 // @ View
@@ -58,35 +54,28 @@ const View = (props: Props) => {
     >
       <div className="page prev" style={prevStyle}>
         {useMemo(
-          () =>
-            isFirstPage ? (
-              <div />
-            ) : (
-              props.renderPrev(current - 1)
-            ),
+          () => {
+            if (isFirstPage) return <div />
+            return props.pages[current - 1]()
+          },
           [current]
         )}
       </div>
       <div className="page current" style={currentStyle}>
-        {useMemo(() => props.renderCurrent(current), [
-          current
-        ])}
+        {useMemo(() => props.pages[current](), [current])}
       </div>
       <div className="page next" style={nextStyle}>
         {useMemo(
-          () =>
-            isLastPage ? (
-              <div />
-            ) : (
-              props.renderNext(current + 1)
-            ),
+          () => {
+            if (isLastPage) return <div />
+            return props.pages[current + 1]()
+          },
           [current]
         )}
       </div>
     </div>
   )
 }
-
 // ______________________________________________________
 //
 // @ StyledView

@@ -10,9 +10,6 @@ import { usePageSwiper, Options } from './usePageSwiper'
 type Props = {
   pages: (() => JSX.Element)[]
   current?: number
-  renderPrev: (index: number) => any
-  renderCurrent: (index: number) => any
-  renderNext: (index: number) => any
   onChangePage?: (current: number) => void
   className?: string
 } & Partial<Options>
@@ -56,28 +53,22 @@ const View = (props: Props) => {
       <div className="container" style={containerStyle}>
         <div className="page prev">
           {useMemo(
-            () =>
-              isFirstPage ? (
-                <div />
-              ) : (
-                props.renderPrev(current - 1)
-              ),
+            () => {
+              if (isFirstPage) return <div />
+              return props.pages[current - 1]()
+            },
             [current]
           )}
         </div>
         <div className="page current">
-          {useMemo(() => props.renderCurrent(current), [
-            current
-          ])}
+          {useMemo(() => props.pages[current](), [current])}
         </div>
         <div className="page next">
           {useMemo(
-            () =>
-              isLastPage ? (
-                <div />
-              ) : (
-                props.renderNext(current + 1)
-              ),
+            () => {
+              if (isLastPage) return <div />
+              return props.pages[current + 1]()
+            },
             [current]
           )}
         </div>

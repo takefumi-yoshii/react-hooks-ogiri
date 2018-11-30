@@ -35,9 +35,7 @@ const defaultOptions = (): Options => ({
 // @ Hooks
 
 const useStickyWrapper = (props: Props) => {
-  const [state, setState] = useState<State>(
-    defaultState()
-  )
+  const [state, setState] = useState<State>(defaultState())
   const options = useMemo(
     (): Options =>
       merge(defaultOptions(), {

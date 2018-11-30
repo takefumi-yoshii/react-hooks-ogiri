@@ -21,18 +21,6 @@ const View = (props: Props) => {
     <div className={props.className}>
       <PageFlipper
         pages={Pages}
-        renderPrev={index => {
-          const Component = Pages[index]
-          return <Component />
-        }}
-        renderCurrent={index => {
-          const Component = Pages[index]
-          return <Component />
-        }}
-        renderNext={index => {
-          const Component = Pages[index]
-          return <Component />
-        }}
         onChangePage={setCurrent}
       />
       <div className="pagenate">
