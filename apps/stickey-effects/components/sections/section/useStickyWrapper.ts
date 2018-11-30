@@ -35,7 +35,7 @@ const defaultOptions = (): Options => ({
 // @ Hooks
 
 const useStickyWrapper = (props: Props) => {
-  const [state, setCurrent] = useState<State>(
+  const [state, setState] = useState<State>(
     defaultState()
   )
   const options = useMemo(
@@ -55,9 +55,9 @@ const useStickyWrapper = (props: Props) => {
         } = props.ref.current.getBoundingClientRect()
         const isEnter = top <= 0 && top + height - 10 >= 0
         if (isEnter) {
-          setCurrent('ENTER')
+          setState('ENTER')
         } else {
-          setCurrent('LEAVE')
+          setState('LEAVE')
         }
       }, options.throttleInterval)
       handleWindowScroll()
