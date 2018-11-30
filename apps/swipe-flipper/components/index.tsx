@@ -27,7 +27,7 @@ const View = (props: Props) => {
         <Pagenate
           current={current}
           color="dark"
-          items={Pages.map((p, i) => i)}
+          count={Pages.length}
         />
       </div>
     </div>

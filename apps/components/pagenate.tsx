@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import styled from 'styled-components'
+import { times } from '../utils/index'
 
 // ______________________________________________________
 //
@@ -17,7 +18,7 @@ const color = {
   }
 }
 type Props = {
-  items: number[]
+  count: number
   color: keyof typeof color
   current?: number
   className?: string
@@ -36,7 +37,7 @@ const Figure = (props: { isCurrent: boolean }) =>
 
 const View = (props: Props) => (
   <div className={props.className}>
-    {props.items.map(i => (
+    {times(props.count).map(i => (
       <Figure key={i} isCurrent={props.current === i} />
     ))}
   </div>

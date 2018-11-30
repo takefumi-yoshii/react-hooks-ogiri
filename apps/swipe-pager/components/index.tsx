@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import PageSwiper from './pageSwiper'
 import Pagenate from '../../components/pagenate'
+import PageSwiper from './pageSwiper'
 import Pages from './pages'
 
 // ______________________________________________________
@@ -28,7 +28,7 @@ const View = (props: Props) => {
         <Pagenate
           current={current}
           color="dark"
-          items={Pages.map((p, i) => i)}
+          count={Pages.length}
         />
       </div>
     </div>

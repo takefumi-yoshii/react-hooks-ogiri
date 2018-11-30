@@ -29,7 +29,7 @@ const View = (props: Props) => {
         <Pagenate
           current={current}
           color="light"
-          items={Images.map((p, i) => i)}
+          count={Images.length}
         />
       </div>
     </div>
