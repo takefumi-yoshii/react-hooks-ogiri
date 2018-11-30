@@ -1,5 +1,4 @@
 import * as React from 'react'
-import styled from 'styled-components'
 import Items from './items'
 import Footer from '../../components/pixabayFooter'
 
@@ -14,14 +13,9 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
-  <div className={props.className}>
+export default (props: Props) => (
+  <>
     <Items />
     <Footer />
-  </div>
+  </>
 )
-// ______________________________________________________
-//
-// @ StyledView
-
-export default styled(View)``

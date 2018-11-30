@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useRef, useEffect } from 'react'
-import styled from 'styled-components'
 import {
   usePhotoCarousel,
   Options
@@ -20,7 +19,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+export default (props: Props) => {
   const ref = useRef({} as HTMLDivElement)
   const {
     current,
@@ -62,9 +61,3 @@ const View = (props: Props) => {
     </div>
   )
 }
-
-// ______________________________________________________
-//
-// @ StyledView
-
-export default styled(View)``

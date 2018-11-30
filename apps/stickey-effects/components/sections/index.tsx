@@ -1,5 +1,4 @@
 import * as React from 'react'
-import styled from 'styled-components'
 import { times } from '../../../utils/index'
 import Section from './section'
 
@@ -15,7 +14,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+export default (props: Props) => (
   <div className={props.className}>
     {times(props.count).map(index => (
       <Section
@@ -28,8 +27,3 @@ const View = (props: Props) => (
     ))}
   </div>
 )
-// ______________________________________________________
-//
-// @ StyledView
-
-export default styled(View)``

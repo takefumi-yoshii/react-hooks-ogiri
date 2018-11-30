@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useState } from 'react'
-import styled from 'styled-components'
 import Input from './input'
 import List from './list'
 import { Item } from './item'
@@ -14,7 +13,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => {
+export default (props: Props) => {
   const [items, updateItems] = useState<Item[]>([])
   return (
     <div className={props.className}>
@@ -31,8 +30,3 @@ const View = (props: Props) => {
     </div>
   )
 }
-// ______________________________________________________
-//
-// @ StyledView
-
-export default styled(View)``
