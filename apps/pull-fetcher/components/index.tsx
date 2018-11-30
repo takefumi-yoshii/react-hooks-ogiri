@@ -15,10 +15,9 @@ type Props = { className?: string }
 
 const View = (props: Props) => (
   <Container
-    renderChildren={state => (
+    render={state => (
       <div className={props.className}>
         <Loading fetched={state.fetched} />
-
         <div
           className="container"
           style={{

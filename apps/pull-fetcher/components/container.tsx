@@ -8,7 +8,7 @@ import { usePullFetcher, State } from './usePullFetcher'
 // @ Types
 
 type Props = {
-  renderChildren: (state: State) => any
+  render: (state: State) => JSX.Element
   className?: string
 }
 // ______________________________________________________
@@ -30,7 +30,7 @@ const View = (props: Props) => {
       onTouchCancel={handleTouchUp}
       onTouchMove={handleTouchMove}
     >
-      {useMemo(() => props.renderChildren(state), [
+      {useMemo(() => props.render(state), [
         state.offsetY,
         state.fetched
       ])}
