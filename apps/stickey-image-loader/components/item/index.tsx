@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useMemo } from 'react'
-import { useStickeyImageLoader } from './useStickeyImageLoader'
+import { useImageLoader } from './useImageLoader'
 import ScrollWrapper from './scrollWrapper'
 
 // ______________________________________________________
@@ -25,17 +25,17 @@ type Props = {
 export default (props: Props) => {
   const {
     state,
-    handleEnter,
-    handleLeave,
+    handleLoadStart,
+    handleDispose,
     handleLoadCompleted
-  } = useStickeyImageLoader({
+  } = useImageLoader({
     imgPath: props.imgPath
   })
   return useMemo(
     () => (
       <ScrollWrapper
-        onEnter={handleEnter}
-        onLeave={handleLeave}
+        onEnter={handleLoadStart}
+        onLeave={handleDispose}
       >
         {props.render({
           imgSrc: state.img.src,

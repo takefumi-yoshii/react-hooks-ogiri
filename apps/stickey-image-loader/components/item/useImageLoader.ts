@@ -11,13 +11,13 @@ type Props = {
 //
 // @ Container
 
-const useStickeyImageLoader = (props: Props) => {
+const useImageLoader = (props: Props) => {
   const [state, update] = useState({
     img: new Image(),
     loaded: false,
     loadCompleted: false
   })
-  const handleEnter = useCallback(
+  const handleLoadStart = useCallback(
     () => {
       state.img.onload = () =>
         update(_state => ({ ..._state, loaded: true }))
@@ -25,7 +25,7 @@ const useStickeyImageLoader = (props: Props) => {
     },
     [state.img]
   )
-  const handleLeave = useCallback(() => {
+  const handleDispose = useCallback(() => {
     update(_state => ({
       ..._state,
       img: new Image(),
@@ -41,8 +41,8 @@ const useStickeyImageLoader = (props: Props) => {
   }, [])
   return {
     state,
-    handleEnter,
-    handleLeave,
+    handleLoadStart,
+    handleDispose,
     handleLoadCompleted
   }
 }
@@ -50,4 +50,4 @@ const useStickeyImageLoader = (props: Props) => {
 //
 // @ exports
 
-export { useStickeyImageLoader }
+export { useImageLoader }
