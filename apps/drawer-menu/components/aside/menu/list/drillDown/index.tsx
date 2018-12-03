@@ -51,7 +51,6 @@ const View = (props: Props) => {
               title={item.title}
             />
           ))}
-          >
         </ul>
       )}
     </div>
