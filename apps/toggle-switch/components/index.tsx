@@ -17,11 +17,7 @@ const View = (props: Props) => (
     {records.map((record, index) => (
       <div key={index} className="item">
         <span>{record.title}</span>
-        <ToggleSwitch
-          width={50}
-          height={30}
-          defaultChecked={record.checked}
-        />
+        <ToggleSwitch defaultChecked={record.checked} />
       </div>
     ))}
   </div>
