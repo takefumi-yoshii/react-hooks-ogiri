@@ -17,7 +17,7 @@ const View = (props: Props) => (
     {records.map((record, index) => (
       <div key={index} className="item">
         <span>{record.title}</span>
-        <ToggleSwitch defaultChecked={record.checked} />
+        <ToggleSwitch defaultChecked={record.checked} activeColor={record.activeColor} />
       </div>
     ))}
   </div>
