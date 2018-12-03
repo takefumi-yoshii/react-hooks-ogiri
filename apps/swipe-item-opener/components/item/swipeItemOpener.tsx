@@ -11,7 +11,7 @@ import SVGInline from 'react-svg-inline'
 // @ Types
 
 type Props = {
-  render: (opend: boolean) => JSX.Element
+  render: (isOpend: boolean) => JSX.Element
   className?: string
 }
 // ______________________________________________________
@@ -20,7 +20,7 @@ type Props = {
 
 const View = (props: Props) => {
   const {
-    opend,
+    isOpend,
     containerStyle,
     handleTouchDown,
     handleTouchUp,
@@ -45,7 +45,7 @@ const View = (props: Props) => {
         []
       )}
       <div className="container" style={containerStyle}>
-        {useMemo(() => props.render(opend), [opend])}
+        {useMemo(() => props.render(isOpend), [isOpend])}
       </div>
     </div>
   )

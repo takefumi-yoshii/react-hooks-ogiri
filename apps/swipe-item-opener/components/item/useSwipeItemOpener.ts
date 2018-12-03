@@ -12,12 +12,12 @@ import merge from 'lodash.merge'
 // @ Types
 
 type State = {
-  isTouchDown: boolean
   offsetX: number
   startX: number
   transitionDuration: number
-  showOpener: boolean
-  opend: boolean
+  isTouchDown: boolean
+  isShowOpener: boolean
+  isOpend: boolean
 }
 type Options = {
   threshold: number
@@ -28,12 +28,12 @@ type Props = Partial<Options>
 // @ Defaults
 
 const defaultState = (): State => ({
-  isTouchDown: false,
   offsetX: 0,
   startX: 0,
   transitionDuration: 0,
-  showOpener: false,
-  opend: false
+  isTouchDown: false,
+  isShowOpener: false,
+  isOpend: false
 })
 const defaultOptions = (): Options => ({
   threshold: 80
@@ -52,17 +52,17 @@ function useSwipeItemOpener(props?: Props) {
     (event: TouchEvent<HTMLElement>) => {
       event.persist()
       update(_state => {
-        if (_state.opend) return _state
+        if (_state.isOpend) return _state
         const startX = event.touches[0].clientX
-        const opend =
-          _state.showOpener && startX < options.threshold
+        const isOpend =
+          _state.isShowOpener && startX < options.threshold
         return {
           ..._state,
-          isTouchDown: true,
           startX,
-          showOpener: false,
           transitionDuration: 0,
-          opend
+          isTouchDown: true,
+          isShowOpener: false,
+          isOpend
         }
       })
     },
@@ -73,10 +73,12 @@ function useSwipeItemOpener(props?: Props) {
       event.persist()
       update(_state => ({
         ..._state,
-        isTouchDown: false,
-        offsetX: _state.showOpener ? options.threshold : 0,
+        offsetX: _state.isShowOpener
+          ? options.threshold
+          : 0,
         startX: 0,
-        transitionDuration: 200
+        transitionDuration: 200,
+        isTouchDown: false
       }))
     },
     []
@@ -85,15 +87,15 @@ function useSwipeItemOpener(props?: Props) {
     (event: TouchEvent<HTMLElement>) => {
       event.persist()
       update(_state => {
-        if (_state.opend) return _state
+        if (_state.isOpend) return _state
         const offsetX =
           event.touches[0].clientX - _state.startX
         if (offsetX < 0) return
         return {
           ..._state,
+          offsetX,
           isTouchDown: false,
-          showOpener: offsetX > options.threshold,
-          offsetX
+          isShowOpener: offsetX > options.threshold
         }
       })
     },
@@ -108,7 +110,7 @@ function useSwipeItemOpener(props?: Props) {
     [state.offsetX, state.transitionDuration]
   )
   return {
-    opend: state.opend,
+    isOpend: state.isOpend,
     containerStyle,
     handleTouchDown,
     handleTouchUp,

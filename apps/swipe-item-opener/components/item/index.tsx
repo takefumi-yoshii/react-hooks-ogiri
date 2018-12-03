@@ -19,12 +19,12 @@ type Props = {
 
 const View = (props: Props) => (
   <SwipeItemOpener
-    render={opend => (
+    render={isOpend => (
       <div className={props.className}>
         <Head
           title={props.title}
           dateLabel={props.dateLabel}
-          opend={opend}
+          isOpend={isOpend}
         />
         <div className="body">{props.body}</div>
       </div>

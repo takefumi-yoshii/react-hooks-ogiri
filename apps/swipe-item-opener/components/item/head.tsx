@@ -10,7 +10,7 @@ type Props = {
   className?: string
   title: string
   dateLabel: string
-  opend: boolean
+  isOpend: boolean
 }
 // ______________________________________________________
 //
@@ -45,7 +45,7 @@ export default styled(View)`
       top: 6px;
       left: -14px;
       background-color: ${props =>
-        props.opend ? 'transparent' : styles.blue};
+        props.isOpend ? 'transparent' : styles.blue};
     }
   }
   > .dateLabel {
