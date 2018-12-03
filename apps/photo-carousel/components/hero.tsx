@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import Pagenate from '../../components/pagenate'
+import Indicate from '../../components/indicate'
 import PhotoCarousel from './photoCarousel/index'
 import Images from '../assets/index'
 
@@ -25,8 +25,8 @@ const View = (props: Props) => {
         transitionDuration={400}
         onChangeCurrent={setCurrent}
       />
-      <div className="pagenate">
-        <Pagenate
+      <div className="indicate">
+        <Indicate
           current={current}
           color="light"
           count={Images.length}
@@ -41,7 +41,7 @@ const View = (props: Props) => {
 
 export default styled(View)`
   position: relative;
-  > .pagenate {
+  > .indicate {
     position: absolute;
     width: 100%;
     height: 20px;

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import Pagenate from '../../components/pagenate'
+import Indicate from '../../components/indicate'
 import PageSwiper from './pageSwiper'
 import Pages from './pages'
 
@@ -24,8 +24,8 @@ const View = (props: Props) => {
         animationDuration={200}
         onChangePage={setCurrent}
       />
-      <div className="pagenate">
-        <Pagenate
+      <div className="indicate">
+        <Indicate
           current={current}
           color="dark"
           count={Pages.length}
@@ -39,7 +39,7 @@ const View = (props: Props) => {
 // @ StyledView
 
 export default styled(View)`
-  > .pagenate {
+  > .indicate {
     width: 100%;
     height: 30px;
     position: absolute;
