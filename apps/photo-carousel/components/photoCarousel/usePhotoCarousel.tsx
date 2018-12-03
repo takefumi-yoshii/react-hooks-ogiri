@@ -21,6 +21,7 @@ type Options = {
   imageRatio: number
   transitionInterval: number
   transitionDuration: number
+  onChangeCurrent: ((current: number) => void) | null
 }
 type Props = {
   ref: RefObject<HTMLElement>
@@ -39,7 +40,8 @@ const defaultOptions = (): Options => ({
   imagesCount: 0,
   imageRatio: 0.66,
   transitionInterval: 4000,
-  transitionDuration: 400
+  transitionDuration: 400,
+  onChangeCurrent: null
 })
 // ______________________________________________________
 //
@@ -53,13 +55,15 @@ const usePhotoCarousel = (props: Props) => {
         imagesCount: props.imagesCount,
         imageRatio: props.imageRatio,
         transitionInterval: props.transitionInterval,
-        transitionDuration: props.transitionDuration
+        transitionDuration: props.transitionDuration,
+        onChangeCurrent: props.onChangeCurrent
       }),
     [
       props.imagesCount,
       props.imageRatio,
       props.transitionInterval,
-      props.transitionDuration
+      props.transitionDuration,
+      props.onChangeCurrent
     ]
   )
   const nodeStyle = useMemo(
@@ -117,6 +121,13 @@ const usePhotoCarousel = (props: Props) => {
       return () => clearInterval(id)
     },
     [options.transitionInterval]
+  )
+  useEffect(
+    () => {
+      if (options.onChangeCurrent === null) return
+      options.onChangeCurrent(state.current)
+    },
+    [state.current]
   )
   return {
     current: state.current,

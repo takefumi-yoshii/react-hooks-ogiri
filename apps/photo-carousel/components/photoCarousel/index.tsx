@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import {
   usePhotoCarousel,
   Options
@@ -22,7 +22,6 @@ type Props = {
 export default (props: Props) => {
   const ref = useRef({} as HTMLDivElement)
   const {
-    current,
     itemWidth,
     itemHeight,
     nodeStyle,
@@ -32,15 +31,9 @@ export default (props: Props) => {
     imagesCount: props.images.length,
     imageRatio: props.imageRatio,
     transitionInterval: props.transitionInterval,
-    transitionDuration: props.transitionDuration
+    transitionDuration: props.transitionDuration,
+    onChangeCurrent: props.onChangeCurrent
   })
-  useEffect(
-    () => {
-      if (props.onChangeCurrent === undefined) return
-      props.onChangeCurrent(current)
-    },
-    [current]
-  )
   return (
     <div
       className={props.className}
