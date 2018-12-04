@@ -29,6 +29,7 @@
     "1223": "parcel apps/modal-queue/index.html watch",
     "1224": "parcel apps/drag-drop-section/index.html watch",
     "1225": "parcel apps/photo-album/index.html watch",
+    "spinoff": "parcel apps/app-home/index.html watch",
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write"
   },
   "dependencies": {
