@@ -66,11 +66,11 @@ const useTileContainer = (props: Props) => {
     [itemWidth, itemHeight]
   )
   return {
-    itemPoints,
     containerWidth: rect.width,
     containerHeight: rect.height,
     itemWidth,
-    itemHeight
+    itemHeight,
+    itemPoints
   }
 }
 // ______________________________________________________

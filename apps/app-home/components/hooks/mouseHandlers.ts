@@ -7,6 +7,26 @@ import * as Handlers from './handlers'
 //
 // @ Handlers
 
+const handleMouseDownElement = (
+  state: State,
+  update: UpdateState<State>
+) => {
+  return useCallback(
+    (event: MouseEvent<HTMLElement>, index: number) => {
+      event.persist()
+      const rect = (event.target as HTMLElement).getBoundingClientRect()
+      Handlers.start(update)({
+        index,
+        startRectPoint: { x: rect.left, y: rect.top },
+        startMousePoint: {
+          x: event.pageX,
+          y: event.pageY
+        }
+      })
+    },
+    [state.isMouseDown]
+  )
+}
 const handleMouseMoveElement = (
   state: State,
   update: UpdateState<State>,
@@ -32,26 +52,6 @@ const handleMouseMoveElement = (
     [state.isMouseDown, state.target]
   )
 }
-const handleMouseDownElement = (
-  state: State,
-  update: UpdateState<State>
-) => {
-  return useCallback(
-    (event: MouseEvent<HTMLElement>, index: number) => {
-      event.persist()
-      const rect = (event.target as HTMLElement).getBoundingClientRect()
-      Handlers.start(update)({
-        index,
-        startRectPoint: { x: rect.left, y: rect.top },
-        startMousePoint: {
-          x: event.pageX,
-          y: event.pageY
-        }
-      })
-    },
-    [state.isMouseDown]
-  )
-}
 const handleMouseUpElement = (
   update: UpdateState<State>
 ) => {
@@ -69,14 +69,14 @@ export default (
   update: UpdateState<State>,
   itemHeight: number
 ) => ({
+  handleMouseDownElement: handleMouseDownElement(
+    state,
+    update
+  ),
   handleMouseMoveElement: handleMouseMoveElement(
     state,
     update,
     itemHeight
-  ),
-  handleMouseDownElement: handleMouseDownElement(
-    state,
-    update
   ),
   handleMouseUpElement: handleMouseUpElement(update)
 })

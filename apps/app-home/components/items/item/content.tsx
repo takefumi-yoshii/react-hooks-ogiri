@@ -9,7 +9,6 @@ import { Record } from '../../records'
 type Props = {
   index: number
   record: Record
-  iconPath: string
   className?: string
 }
 // ______________________________________________________
@@ -47,7 +46,7 @@ export default styled(View)`
   > .icon {
     width: 64px;
     height: 64px;
-    background: url(${props => props.record.iconPath}) #ccc;
+    background: url(${props => props.record.iconPath});
     background-size: 64px 64px;
     border-radius: 14px;
   }

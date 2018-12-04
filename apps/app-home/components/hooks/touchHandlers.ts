@@ -73,14 +73,14 @@ export default (
   update: UpdateState<State>,
   itemHeight: number
 ) => ({
+  handleTouchStartElement: handleTouchStartElement(
+    state,
+    update
+  ),
   handleTouchMoveElement: handleTouchMoveElement(
     state,
     update,
     itemHeight
-  ),
-  handleTouchStartElement: handleTouchStartElement(
-    state,
-    update
   ),
   handleTouchEndElement: handleTouchEndElement(update)
 })

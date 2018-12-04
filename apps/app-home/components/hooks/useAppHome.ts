@@ -62,13 +62,7 @@ const defaultState = (): State => ({
 // @ Hooks
 
 const useAppHome = (props: Props) => {
-  const {
-    itemPoints,
-    itemWidth,
-    itemHeight,
-    holizontalCount,
-    verticalCount
-  } = useMemo(
+  const rotateTileContainer = useMemo(
     () =>
       useRotateTileContainer({
         ref: props.ref,
@@ -83,26 +77,23 @@ const useAppHome = (props: Props) => {
       elementsIndex: props.records.map((record, i) => i)
     }
   })
-  Effects(
-    state,
-    update,
-    props.records,
-    itemWidth,
-    itemHeight,
-    holizontalCount
-  )
+  Effects(props.records, state, update, rotateTileContainer)
   return {
     records: props.records,
-    itemPoints,
-    itemWidth,
-    itemHeight,
-    holizontalCount,
-    verticalCount,
     elementsIndex: state.elementsIndex,
     isMouseDown: state.isMouseDown,
     target: state.target,
-    ...TouchHandlers(state, update, itemHeight),
-    ...MouseHandlers(state, update, itemHeight)
+    ...rotateTileContainer,
+    ...TouchHandlers(
+      state,
+      update,
+      rotateTileContainer.itemHeight
+    ),
+    ...MouseHandlers(
+      state,
+      update,
+      rotateTileContainer.itemHeight
+    )
   }
 }
 // ______________________________________________________

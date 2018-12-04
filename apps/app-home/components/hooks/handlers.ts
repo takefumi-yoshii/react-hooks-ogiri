@@ -22,20 +22,21 @@ type MoveProps = {
 //
 // @ Handlers
 
-const end = (update: UpdateState<State>) => {
-  return update(_state => {
-    if (_state.target.index === -1) return _state
-    return {
-      ..._state,
-      isMouseDown: false,
-      target: {
-        index: -1,
-        startRectPoint: { x: 0, y: 0 },
-        pointOffset: { x: 0, y: 0 },
-        startMousePoint: { x: 0, y: 0 }
+const start = (update: UpdateState<State>) => {
+  return (props: StartProps) => {
+    update(_state => {
+      return {
+        ..._state,
+        target: {
+          ..._state.target,
+          ...props
+        },
+        isMouseDown: true,
+        hitIndex: props.index,
+        prevHitIndex: props.index
       }
-    }
-  })
+    })
+  }
 }
 const move = (
   update: UpdateState<State>,
@@ -63,21 +64,20 @@ const move = (
     })
   }
 }
-const start = (update: UpdateState<State>) => {
-  return (props: StartProps) => {
-    update(_state => {
-      return {
-        ..._state,
-        target: {
-          ..._state.target,
-          ...props
-        },
-        isMouseDown: true,
-        hitIndex: props.index,
-        prevHitIndex: props.index
+const end = (update: UpdateState<State>) => {
+  return update(_state => {
+    if (_state.target.index === -1) return _state
+    return {
+      ..._state,
+      isMouseDown: false,
+      target: {
+        index: -1,
+        startRectPoint: { x: 0, y: 0 },
+        pointOffset: { x: 0, y: 0 },
+        startMousePoint: { x: 0, y: 0 }
       }
-    })
-  }
+    }
+  })
 }
 // ______________________________________________________
 //

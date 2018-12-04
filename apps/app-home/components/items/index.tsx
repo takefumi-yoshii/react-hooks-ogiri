@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useContext, useMemo } from 'react'
-import styled from 'styled-components'
 import { DragDropContext } from '../contexts'
 import { Record } from '../records'
 import Item from './item/index'
@@ -48,13 +47,6 @@ const View = (props: Props) => (
 )
 // ______________________________________________________
 //
-// @ StyledView
-
-const StyledView = styled(View)`
-  position: relative;
-`
-// ______________________________________________________
-//
 // @ Container
 
 export default () => {
@@ -70,7 +62,7 @@ export default () => {
   if (itemWidth === 0) return <div />
   return useMemo(
     () => (
-      <StyledView
+      <View
         records={records}
         width={itemWidth}
         height={itemHeight}

@@ -40,7 +40,8 @@ const useRotateTileContainer = (props: Props) => {
   )
   const holizontalCount = useMemo(
     () => {
-      if (window.orientation === undefined) return options.holizontalCount
+      if (window.orientation === undefined)
+        return options.holizontalCount
       return window.orientation === 0
         ? options.holizontalCount
         : options.verticalCount
@@ -49,14 +50,15 @@ const useRotateTileContainer = (props: Props) => {
   )
   const verticalCount = useMemo(
     () => {
-      if (window.orientation === undefined) return options.verticalCount
+      if (window.orientation === undefined)
+        return options.verticalCount
       return window.orientation === 0
         ? options.verticalCount
         : options.holizontalCount
     },
     [window.orientation]
   )
-  const { itemPoints, itemWidth, itemHeight } = useMemo(
+  const tileContainer = useMemo(
     () =>
       useTileContainer({
         ref: props.ref,
@@ -66,9 +68,7 @@ const useRotateTileContainer = (props: Props) => {
     [verticalCount, holizontalCount]
   )
   return {
-    itemPoints,
-    itemWidth,
-    itemHeight,
+    ...tileContainer,
     holizontalCount,
     verticalCount
   }
