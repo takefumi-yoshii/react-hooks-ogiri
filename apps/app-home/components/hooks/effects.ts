@@ -32,7 +32,7 @@ const updateHitPoints = (
         })
       }))
     },
-    [rotateTileContainer]
+    [rotateTileContainer.containerWidth]
   )
 }
 const updateElementsIndex = (
