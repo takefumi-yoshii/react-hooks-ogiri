@@ -12,7 +12,7 @@ const records: Record[] = [
   { title: 'weather', iconPath: require('./assets/013-sunset.png') },
   { title: 'compass', iconPath: require('./assets/005-compass.png') },
   { title: 'map', iconPath: require('./assets/011-map-location.png') },
-  { title: 'world', iconPath: require('./assets/010-world.png') },
+  { title: 'travel', iconPath: require('./assets/010-world.png') },
   { title: 'video', iconPath: require('./assets/008-video-camera.png') },
   { title: 'camera', iconPath: require('./assets/007-camera.png') },
   { title: 'talk', iconPath: require('./assets/018-talk.png') },
