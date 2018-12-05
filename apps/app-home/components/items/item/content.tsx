@@ -7,7 +7,6 @@ import { Record } from '../../records'
 // @ Types
 
 type Props = {
-  index: number
   record: Record
   className?: string
 }

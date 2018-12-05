@@ -100,4 +100,4 @@ const useAppHome = (props: Props) => {
 //
 // @ exports
 
-export { useAppHome, State }
+export { useAppHome, Target, State }

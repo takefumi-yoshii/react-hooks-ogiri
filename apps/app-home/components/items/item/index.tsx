@@ -1,14 +1,15 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import { Record } from '../../records'
-import ItemContainer from './container'
+import MouseContainer from './mouseContainer'
+import TouchContainer from './touchContainer'
 import ItemContent from './content'
 
 // ______________________________________________________
 //
 // @ Types
 
-type Props = {
+type ContainerProps = {
   record: Record
   index: number
   width: number
@@ -16,12 +17,18 @@ type Props = {
   x: number
   y: number
 }
+type Props = {
+  Container: (
+    props: ContainerProps
+  ) => React.ReactElement<ContainerProps>
+} & ContainerProps
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => (
-  <ItemContainer
+const View = (props: Props) => (
+  <props.Container
+    record={props.record}
     index={props.index}
     width={props.width}
     height={props.height}
@@ -30,12 +37,28 @@ export default (props: Props) => (
   >
     {useMemo(
       () => (
-        <ItemContent
-          record={props.record}
-          index={props.index}
-        />
+        <ItemContent record={props.record} />
       ),
-      [props.record, props.index]
+      [props.record]
     )}
-  </ItemContainer>
+  </props.Container>
 )
+// ______________________________________________________
+//
+// @ Container
+
+export default (props: ContainerProps) => {
+  return useMemo(
+    () => (
+      <View
+        Container={
+          window.ontouchstart === null
+            ? TouchContainer
+            : MouseContainer
+        }
+        {...props}
+      />
+    ),
+    [props.x, props.y]
+  )
+}
