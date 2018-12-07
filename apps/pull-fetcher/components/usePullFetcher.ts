@@ -95,34 +95,36 @@ function usePullFetcher() {
       window.removeEventListener('scroll', handleScroll)
   }, [])
   useEffect(
-    async () => {
-      if (state.fetched) return
-      try {
-        await wait(400)
-        const newItems = getMailItems(1)
-        const items = [
-          ...state.items,
-          ...newItems.map(item => ({
-            ...item,
-            date: new Date(item.date)
+    () => {
+      ;(async () => {
+        if (state.fetched) return
+        try {
+          await wait(400)
+          const newItems = getMailItems(1)
+          const items = [
+            ...state.items,
+            ...newItems.map(item => ({
+              ...item,
+              date: new Date(item.date)
+            }))
+          ]
+          update(_state => ({
+            ..._state,
+            fetched: true,
+            offsetY: 0,
+            items: items.sort(
+              (a, b) => b.date.getTime() - a.date.getTime()
+            )
           }))
-        ]
-        update(_state => ({
-          ..._state,
-          fetched: true,
-          offsetY: 0,
-          items: items.sort(
-            (a, b) => b.date.getTime() - a.date.getTime()
-          )
-        }))
-      } catch (error) {
-        update(_state => ({
-          ..._state,
-          fetched: true,
-          offsetY: 0,
-          error
-        }))
-      }
+        } catch (error) {
+          update(_state => ({
+            ..._state,
+            fetched: true,
+            offsetY: 0,
+            error
+          }))
+        }
+      })()
     },
     [state.fetched]
   )

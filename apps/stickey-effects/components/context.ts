@@ -1,6 +1,9 @@
-import { createContext } from 'react'
-import { UpdateState } from '../../types/hooks'
+import {
+  createContext,
+  Dispatch,
+  SetStateAction
+} from 'react'
 export const CTX = createContext({} as {
   current: number
-  setCurrent: UpdateState<number>
+  setCurrent: Dispatch<SetStateAction<number>>
 })
