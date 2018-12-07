@@ -35,7 +35,7 @@ const updateHitPoints = (
     [rotateTileContainer.containerWidth]
   )
 }
-const updateElementsIndex = (
+const updateIndexMapping = (
   state: State,
   update: UpdateState<State>
 ) => {
@@ -45,24 +45,21 @@ const updateElementsIndex = (
         const direction =
           _state.hitIndex - _state.prevHitIndex
         if (direction === 0) return _state
-        const elementsIndex = [..._state.elementsIndex]
-        const i = elementsIndex.findIndex(
+        const indexMapping = [..._state.indexMapping]
+        const i = indexMapping.findIndex(
           index => index === _state.target.index
         )
-        const item = elementsIndex[i]
+        const item = indexMapping[i]
         if (direction === -1) {
-          elementsIndex.splice(_state.hitIndex, 0, item)
-          elementsIndex.splice(
-            elementsIndex.lastIndexOf(item),
-            1
-          )
+          indexMapping.splice(_state.hitIndex, 0, item)
+          indexMapping.splice(indexMapping.lastIndexOf(item), 1)
         } else {
-          elementsIndex.splice(i, 1)
-          elementsIndex.splice(_state.hitIndex, 0, item)
+          indexMapping.splice(i, 1)
+          indexMapping.splice(_state.hitIndex, 0, item)
         }
         return {
           ..._state,
-          elementsIndex,
+          indexMapping,
           prevHitIndex: _state.hitIndex
         }
       })
@@ -83,5 +80,5 @@ export default (
   >
 ) => {
   updateHitPoints(update, records, rotateTileContainer)
-  updateElementsIndex(state, update)
+  updateIndexMapping(state, update)
 }

@@ -15,7 +15,7 @@ type Props = {
   itemPoints: { x: number; y: number }[][]
   holizontalCount: number
   verticalCount: number
-  elementsIndex: number[]
+  indexMapping: number[]
   className?: string
 }
 // ______________________________________________________
@@ -25,7 +25,7 @@ type Props = {
 const View = (props: Props) => (
   <div className={props.className}>
     {props.records.map((record, index) => {
-      const elementIndex = props.elementsIndex.findIndex(
+      const elementIndex = props.indexMapping.findIndex(
         i => i === index
       )
       const yi = (elementIndex / props.holizontalCount) >> 0
@@ -57,7 +57,7 @@ export default () => {
     itemHeight,
     holizontalCount,
     verticalCount,
-    elementsIndex
+    indexMapping
   } = useContext(DragDropContext)
   if (itemWidth === 0) return <div />
   return useMemo(
@@ -69,7 +69,7 @@ export default () => {
         itemPoints={itemPoints}
         holizontalCount={holizontalCount}
         verticalCount={verticalCount}
-        elementsIndex={elementsIndex}
+        indexMapping={indexMapping}
       />
     ),
     [
@@ -78,7 +78,7 @@ export default () => {
       itemHeight,
       holizontalCount,
       verticalCount,
-      elementsIndex
+      indexMapping
     ]
   )
 }

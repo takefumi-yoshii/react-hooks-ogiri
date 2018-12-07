@@ -22,7 +22,7 @@ export default (props: Props) => {
   const {
     isMouseDown,
     target,
-    elementsIndex,
+    indexMapping,
     handleMouseDownElement,
     handleMouseMoveElement,
     handleMouseUpElement,
@@ -33,7 +33,7 @@ export default (props: Props) => {
   return useMemo(
     () => {
       const isMoveElement = target.index === props.index
-      const index = elementsIndex.findIndex(
+      const index = indexMapping.findIndex(
         index => props.index === index
       )
       const x = 0
@@ -84,7 +84,7 @@ export default (props: Props) => {
       props.width,
       isMouseDown,
       target,
-      elementsIndex,
+      indexMapping,
       handleMouseDownElement,
       handleMouseMoveElement,
       handleMouseUpElement,

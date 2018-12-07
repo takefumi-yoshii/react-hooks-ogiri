@@ -24,7 +24,7 @@ type State = {
     pointOffset: Point
     startMousePoint: Point
   }
-  elementsIndex: number[]
+  indexMapping: number[]
   hitPoints: Point[]
   hitIndex: number
   prevHitIndex: number
@@ -57,7 +57,7 @@ const defaultState = (): State => ({
     pointOffset: { x: 0, y: 0 },
     startMousePoint: { x: 0, y: 0 }
   },
-  elementsIndex: [],
+  indexMapping: [],
   hitPoints: [],
   hitIndex: -1,
   prevHitIndex: -1
@@ -70,9 +70,7 @@ const useDragDropContainer = (props: Props) => {
   const [state, update] = useState<State>({
     ...defaultState(),
     ...{
-      elementsIndex: props.records.map(
-        (record, index) => index
-      ),
+      indexMapping: props.records.map((record, index) => index),
       hitPoints: props.records.map((record, index) => {
         const x = props.left + props.itemWidth * 0.5
         const y =
@@ -228,24 +226,21 @@ const useDragDropContainer = (props: Props) => {
         const direction =
           _state.hitIndex - _state.prevHitIndex
         if (direction === 0) return _state
-        const elementsIndex = [..._state.elementsIndex]
-        const index = elementsIndex.findIndex(
+        const indexMapping = [..._state.indexMapping]
+        const index = indexMapping.findIndex(
           index => index === _state.target.index
         )
-        const item = elementsIndex[index]
+        const item = indexMapping[index]
         if (direction === -1) {
-          elementsIndex.splice(_state.hitIndex, 0, item)
-          elementsIndex.splice(
-            elementsIndex.lastIndexOf(item),
-            1
-          )
+          indexMapping.splice(_state.hitIndex, 0, item)
+          indexMapping.splice(indexMapping.lastIndexOf(item), 1)
         } else {
-          elementsIndex.splice(index, 1)
-          elementsIndex.splice(_state.hitIndex, 0, item)
+          indexMapping.splice(index, 1)
+          indexMapping.splice(_state.hitIndex, 0, item)
         }
         return {
           ..._state,
-          elementsIndex,
+          indexMapping,
           prevHitIndex: _state.hitIndex
         }
       })
@@ -284,7 +279,7 @@ const useDragDropContainer = (props: Props) => {
   return {
     isMouseDown: state.isMouseDown,
     target: state.target,
-    elementsIndex: state.elementsIndex,
+    indexMapping: state.indexMapping,
     handleMouseDownElement,
     handleMouseMoveElement,
     handleMouseUpElement,

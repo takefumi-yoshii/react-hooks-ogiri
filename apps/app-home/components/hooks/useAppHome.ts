@@ -26,7 +26,7 @@ type Target = {
 type State = {
   isMouseDown: boolean
   target: Target
-  elementsIndex: number[]
+  indexMapping: number[]
   hitPoints: Point[]
   hitIndex: number
   prevHitIndex: number
@@ -52,7 +52,7 @@ const defaultState = (): State => ({
     pointOffset: { x: 0, y: 0 },
     startMousePoint: { x: 0, y: 0 }
   },
-  elementsIndex: [],
+  indexMapping: [],
   hitPoints: [],
   hitIndex: -1,
   prevHitIndex: -1
@@ -74,13 +74,13 @@ const useAppHome = (props: Props) => {
   const [state, update] = useState<State>({
     ...defaultState(),
     ...{
-      elementsIndex: props.records.map((record, i) => i)
+      indexMapping: props.records.map((record, i) => i)
     }
   })
   Effects(props.records, state, update, rotateTileContainer)
   return {
     records: props.records,
-    elementsIndex: state.elementsIndex,
+    indexMapping: state.indexMapping,
     isMouseDown: state.isMouseDown,
     target: state.target,
     ...rotateTileContainer,
