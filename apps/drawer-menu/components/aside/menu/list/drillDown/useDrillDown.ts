@@ -14,8 +14,8 @@ import merge from 'lodash.merge'
 
 type State = {
   opened: boolean
-  height: string
-  defaultHeight: string
+  height: string | number
+  defaultHeight: string | number
 }
 type Options = {
   transitionDuration: number

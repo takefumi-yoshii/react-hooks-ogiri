@@ -1,5 +1,10 @@
 import * as React from 'react'
-import { useCallback, CSSProperties } from 'react'
+import {
+  useCallback,
+  CSSProperties,
+  Dispatch,
+  SetStateAction
+} from 'react'
 import styled from 'styled-components'
 import * as styles from '../../../styles'
 import { useDrawerMenu } from './useDrawerMenu'
@@ -17,7 +22,7 @@ type Props = {
   className?: string
 }
 type ContainerProps = {
-  handleChangeOpened?: (opened: boolean) => void
+  handleChangeOpened?: Dispatch<SetStateAction<boolean>>
 }
 // ______________________________________________________
 //
@@ -62,8 +67,9 @@ export default (props: ContainerProps) => {
   } = useDrawerMenu({ width: 240 })
   const handleTransitionEnd = useCallback(
     () => {
-      if (props.handleChangeOpened)
+      if (props.handleChangeOpened !== undefined) {
         props.handleChangeOpened(opened)
+      }
     },
     [props.handleChangeOpened, opened]
   )

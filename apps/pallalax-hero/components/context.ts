@@ -1,7 +1,10 @@
-import { createContext } from 'react'
-import { UpdateState } from '../../types/hooks'
+import {
+  createContext,
+  Dispatch,
+  SetStateAction
+} from 'react'
 
 export const CTX = createContext({} as {
   coefficient: number
-  updateCoefficient: UpdateState<number>
+  updateCoefficient: Dispatch<SetStateAction<number>>
 })

@@ -22,8 +22,8 @@ const defaultRecords: Record[] = [
 // @ Helper
 
 const getRecords = (records = defaultRecords) => {
-  const sortedRecords = records.sort(
-    (a, b) => (a.point > b.point ? -1 : 1)
+  const sortedRecords = records.sort((a, b) =>
+    a.point > b.point ? -1 : 1
   )
   const totalPoint = records
     .map(record => record.point)

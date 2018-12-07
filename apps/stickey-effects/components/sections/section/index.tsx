@@ -64,7 +64,7 @@ export default (props: ContainerProps) => {
   const { setCurrent } = useContext(CTX)
   const onEnter = useCallback(() => {
     updateState(true)
-    setCurrent(props.index)
+    setCurrent(_state => props.index)
   }, [])
   const onLeave = useCallback(() => {
     updateState(false)

@@ -24,7 +24,7 @@ const defaultState = (): State => ({
 function useMailFetcher() {
   const [state, update] = useState<State>(defaultState())
   useEffect(
-    async () => {
+    () => {
       if (!state.fetched) {
         try {
           const items = getMailItems(10)

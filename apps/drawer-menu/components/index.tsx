@@ -1,7 +1,11 @@
 import * as React from 'react'
-import { useState, useMemo } from 'react'
+import {
+  useState,
+  useMemo,
+  Dispatch,
+  SetStateAction
+} from 'react'
 import styled from 'styled-components'
-import { UpdateState } from '../../types/hooks'
 import Aside from './aside/index'
 import Body from './body/index'
 import Footer from '../../components/pixabayFooter'
@@ -12,7 +16,7 @@ import Footer from '../../components/pixabayFooter'
 
 type Props = {
   opend: boolean
-  toggleOpened: UpdateState<boolean>
+  toggleOpened: Dispatch<SetStateAction<boolean>>
   mainStyle: { opacity: number; transform: string }
   className?: string
 }
