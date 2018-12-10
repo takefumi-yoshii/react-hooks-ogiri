@@ -43,7 +43,7 @@ const View = (props: Props) => {
         isMoveElement,
         target
       }),
-    [props.width, props.height, props.x, props.y, target]
+    [target, props.width, props.height]
   )
   return useMemo(
     () => {

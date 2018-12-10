@@ -1,4 +1,9 @@
-import { useCallback, TouchEvent, Dispatch, SetStateAction } from 'react'
+import {
+  useCallback,
+  TouchEvent,
+  Dispatch,
+  SetStateAction
+} from 'react'
 import { State } from './useAppHome'
 import * as Handlers from './handlers'
 

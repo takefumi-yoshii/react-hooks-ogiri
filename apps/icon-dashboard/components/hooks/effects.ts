@@ -51,7 +51,10 @@ const updateIndexMapping = (
         const item = indexMapping[i]
         if (direction === -1) {
           indexMapping.splice(_state.hitIndex, 0, item)
-          indexMapping.splice(indexMapping.lastIndexOf(item), 1)
+          indexMapping.splice(
+            indexMapping.lastIndexOf(item),
+            1
+          )
         } else {
           indexMapping.splice(i, 1)
           indexMapping.splice(_state.hitIndex, 0, item)

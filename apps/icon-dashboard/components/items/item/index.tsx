@@ -47,18 +47,13 @@ const View = (props: Props) => (
 //
 // @ Container
 
-export default (props: ContainerProps) => {
-  return useMemo(
-    () => (
-      <View
-        Container={
-          window.ontouchstart === null
-            ? TouchContainer
-            : MouseContainer
-        }
-        {...props}
-      />
-    ),
-    [props.x, props.y]
-  )
-}
+export default (props: ContainerProps) => (
+  <View
+    Container={
+      window.ontouchstart === null
+        ? TouchContainer
+        : MouseContainer
+    }
+    {...props}
+  />
+)

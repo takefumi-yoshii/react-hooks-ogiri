@@ -70,7 +70,9 @@ const useDragDropContainer = (props: Props) => {
   const [state, update] = useState<State>({
     ...defaultState(),
     ...{
-      indexMapping: props.records.map((record, index) => index),
+      indexMapping: props.records.map(
+        (record, index) => index
+      ),
       hitPoints: props.records.map((record, index) => {
         const x = props.left + props.itemWidth * 0.5
         const y =
@@ -233,7 +235,10 @@ const useDragDropContainer = (props: Props) => {
         const item = indexMapping[index]
         if (direction === -1) {
           indexMapping.splice(_state.hitIndex, 0, item)
-          indexMapping.splice(indexMapping.lastIndexOf(item), 1)
+          indexMapping.splice(
+            indexMapping.lastIndexOf(item),
+            1
+          )
         } else {
           indexMapping.splice(index, 1)
           indexMapping.splice(_state.hitIndex, 0, item)
