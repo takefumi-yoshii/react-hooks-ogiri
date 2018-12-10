@@ -1,5 +1,4 @@
-import { useCallback, MouseEvent } from 'react'
-import { UpdateState } from '../../../types/hooks'
+import { useCallback, MouseEvent, Dispatch, SetStateAction } from 'react'
 import { State } from './useAppHome'
 import * as Handlers from './handlers'
 
@@ -9,7 +8,7 @@ import * as Handlers from './handlers'
 
 const handleMouseDownElement = (
   state: State,
-  update: UpdateState<State>
+  update: Dispatch<SetStateAction<State>>
 ) => {
   return useCallback(
     (event: MouseEvent<HTMLElement>, index: number) => {
@@ -29,7 +28,7 @@ const handleMouseDownElement = (
 }
 const handleMouseMoveElement = (
   state: State,
-  update: UpdateState<State>,
+  update: Dispatch<SetStateAction<State>>,
   itemHeight: number
 ) => {
   return useCallback(
@@ -53,7 +52,7 @@ const handleMouseMoveElement = (
   )
 }
 const handleMouseUpElement = (
-  update: UpdateState<State>
+  update: Dispatch<SetStateAction<State>>
 ) => {
   return useCallback((event: MouseEvent<HTMLElement>) => {
     event.persist()
@@ -66,7 +65,7 @@ const handleMouseUpElement = (
 
 export default (
   state: State,
-  update: UpdateState<State>,
+  update: Dispatch<SetStateAction<State>>,
   itemHeight: number
 ) => ({
   handleMouseDownElement: handleMouseDownElement(

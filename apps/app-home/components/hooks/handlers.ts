@@ -1,4 +1,4 @@
-import { UpdateState } from '../../../types/hooks'
+import { Dispatch, SetStateAction } from 'react'
 import { State } from './useAppHome'
 
 // ______________________________________________________
@@ -22,7 +22,7 @@ type MoveProps = {
 //
 // @ Handlers
 
-const start = (update: UpdateState<State>) => {
+const start = (update: Dispatch<SetStateAction<State>>) => {
   return (props: StartProps) => {
     update(_state => {
       return {
@@ -39,7 +39,7 @@ const start = (update: UpdateState<State>) => {
   }
 }
 const move = (
-  update: UpdateState<State>,
+  update: Dispatch<SetStateAction<State>>,
   itemHeight: number
 ) => {
   return ({ center, pointOffset }: MoveProps) => {
@@ -64,7 +64,7 @@ const move = (
     })
   }
 }
-const end = (update: UpdateState<State>) => {
+const end = (update: Dispatch<SetStateAction<State>>) => {
   return update(_state => {
     if (_state.target.index === -1) return _state
     return {

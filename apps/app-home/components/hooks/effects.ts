@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { UpdateState } from '../../../types/hooks'
+import { useEffect, Dispatch, SetStateAction } from 'react'
 import { Record } from '../records'
 import { State } from './useAppHome'
 import { useRotateTileContainer } from './useRotateTileContainer'
@@ -8,7 +7,7 @@ import { useRotateTileContainer } from './useRotateTileContainer'
 // @ Effects
 
 const updateHitPoints = (
-  update: UpdateState<State>,
+  update: Dispatch<SetStateAction<State>>,
   records: Record[],
   rotateTileContainer: ReturnType<
     typeof useRotateTileContainer
@@ -37,7 +36,7 @@ const updateHitPoints = (
 }
 const updateIndexMapping = (
   state: State,
-  update: UpdateState<State>
+  update: Dispatch<SetStateAction<State>>
 ) => {
   useEffect(
     () => {
@@ -74,7 +73,7 @@ const updateIndexMapping = (
 export default (
   records: Record[],
   state: State,
-  update: UpdateState<State>,
+  update: Dispatch<SetStateAction<State>>,
   rotateTileContainer: ReturnType<
     typeof useRotateTileContainer
   >

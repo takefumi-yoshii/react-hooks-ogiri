@@ -1,5 +1,4 @@
-import { useCallback, TouchEvent } from 'react'
-import { UpdateState } from '../../../types/hooks'
+import { useCallback, TouchEvent, Dispatch, SetStateAction } from 'react'
 import { State } from './useAppHome'
 import * as Handlers from './handlers'
 
@@ -9,7 +8,7 @@ import * as Handlers from './handlers'
 
 const handleTouchStartElement = (
   state: State,
-  update: UpdateState<State>
+  update: Dispatch<SetStateAction<State>>
 ) => {
   return useCallback(
     (event: TouchEvent<HTMLElement>, index: number) => {
@@ -29,7 +28,7 @@ const handleTouchStartElement = (
 }
 const handleTouchMoveElement = (
   state: State,
-  update: UpdateState<State>,
+  update: Dispatch<SetStateAction<State>>,
   itemHeight: number
 ) => {
   return useCallback(
@@ -57,7 +56,7 @@ const handleTouchMoveElement = (
   )
 }
 const handleTouchEndElement = (
-  update: UpdateState<State>
+  update: Dispatch<SetStateAction<State>>
 ) => {
   return useCallback((event: TouchEvent<HTMLElement>) => {
     event.persist()
@@ -70,7 +69,7 @@ const handleTouchEndElement = (
 
 export default (
   state: State,
-  update: UpdateState<State>,
+  update: Dispatch<SetStateAction<State>>,
   itemHeight: number
 ) => ({
   handleTouchStartElement: handleTouchStartElement(
