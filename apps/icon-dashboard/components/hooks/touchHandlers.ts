@@ -4,7 +4,7 @@ import {
   Dispatch,
   SetStateAction
 } from 'react'
-import { State } from './useAppHome'
+import { State } from './useIconDashboard'
 import * as Handlers from './handlers'
 
 // ______________________________________________________

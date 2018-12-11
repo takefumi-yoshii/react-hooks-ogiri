@@ -1,4 +1,4 @@
-import { Target } from '../../hooks/useAppHome'
+import { Target } from '../../hooks/useIconDashboard'
 // ______________________________________________________
 //
 // @ Types

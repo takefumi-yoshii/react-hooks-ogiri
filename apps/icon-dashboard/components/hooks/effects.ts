@@ -1,6 +1,6 @@
 import { useEffect, Dispatch, SetStateAction } from 'react'
 import { Record } from '../records'
-import { State } from './useAppHome'
+import { State } from './useIconDashboard'
 import { useRotateTileContainer } from './useRotateTileContainer'
 // ______________________________________________________
 //

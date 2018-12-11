@@ -1,6 +1,6 @@
 import { createContext } from 'react'
-import { useAppHome } from './hooks/useAppHome'
+import { useIconDashboard } from './hooks/useIconDashboard'
 
 export const DragDropContext = createContext(
-  {} as ReturnType<typeof useAppHome>
+  {} as ReturnType<typeof useIconDashboard>
 )

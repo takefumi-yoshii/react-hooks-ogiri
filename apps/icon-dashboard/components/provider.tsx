@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import styled from 'styled-components'
 import { DragDropContext } from './contexts'
 import { Record } from './records'
-import { useAppHome } from './hooks/useAppHome'
+import { useIconDashboard } from './hooks/useIconDashboard'
 
 // ______________________________________________________
 //
@@ -22,7 +22,7 @@ type Props = {
 
 const View = (props: Props) => {
   const ref = useRef({} as HTMLDivElement)
-  const value = useAppHome({
+  const value = useIconDashboard({
     ref,
     records: props.records,
     verticalCount: props.verticalCount,

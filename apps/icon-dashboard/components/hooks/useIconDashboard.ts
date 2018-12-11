@@ -61,7 +61,7 @@ const defaultState = (): State => ({
 //
 // @ Hooks
 
-const useAppHome = (props: Props) => {
+const useIconDashboard = (props: Props) => {
   const rotateTileContainer = useMemo(
     () =>
       useRotateTileContainer({
@@ -100,4 +100,4 @@ const useAppHome = (props: Props) => {
 //
 // @ exports
 
-export { useAppHome, Target, State }
+export { useIconDashboard, Target, State }
