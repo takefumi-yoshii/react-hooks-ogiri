@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useRef } from 'react'
 import styled from 'styled-components'
-import { DragDropContext } from './contexts'
+import { IconDashboardContext } from './contexts'
 import { Record } from './records'
 import { useIconDashboard } from './hooks/useIconDashboard'
 
@@ -29,11 +29,11 @@ const View = (props: Props) => {
     holizontalCount: props.holizontalCount
   })
   return (
-    <DragDropContext.Provider value={value}>
+    <IconDashboardContext.Provider value={value}>
       <div className={props.className} ref={ref}>
         {props.children}
       </div>
-    </DragDropContext.Provider>
+    </IconDashboardContext.Provider>
   )
 }
 // ______________________________________________________

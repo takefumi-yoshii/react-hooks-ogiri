@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useContext, useMemo } from 'react'
-import { DragDropContext } from '../contexts'
+import { IconDashboardContext } from '../contexts'
 import { Record } from '../records'
 import Item from './item/index'
 
@@ -58,7 +58,7 @@ export default () => {
     holizontalCount,
     verticalCount,
     indexMapping
-  } = useContext(DragDropContext)
+  } = useContext(IconDashboardContext)
   if (itemWidth === 0) return <div />
   return useMemo(
     () => (

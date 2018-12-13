@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 import { useDragDropContainer } from './useDragDropContainer'
 
-export const DragDropContext = createContext(
+export const IconDashboardContext = createContext(
   {} as ReturnType<typeof useDragDropContainer>
 )

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useMemo, useContext } from 'react'
 import styled from 'styled-components'
-import { DragDropContext } from '../../contexts'
+import { IconDashboardContext } from '../../contexts'
 import { getContainerStyle } from './getContainerStyle'
 // ______________________________________________________
 //
@@ -27,7 +27,7 @@ const View = (props: Props) => {
     handleMouseDownElement,
     handleMouseMoveElement,
     handleMouseUpElement
-  } = useContext(DragDropContext)
+  } = useContext(IconDashboardContext)
   const isMoveElement = useMemo(
     () => target.index === props.index,
     [target.index]

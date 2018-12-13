@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { DragDropContext } from './contexts'
+import { IconDashboardContext } from './contexts'
 import { Record } from './records'
 import { useDragDropContainer } from './useDragDropContainer'
 
@@ -28,8 +28,8 @@ export default (props: Props) => {
     itemHeight: props.itemHeight
   })
   return (
-    <DragDropContext.Provider value={value}>
+    <IconDashboardContext.Provider value={value}>
       {props.children}
-    </DragDropContext.Provider>
+    </IconDashboardContext.Provider>
   )
 }

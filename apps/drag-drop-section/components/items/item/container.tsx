@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useMemo, useContext } from 'react'
-import { DragDropContext } from '../../contexts'
+import { IconDashboardContext } from '../../contexts'
 import MouseView from './mouseView'
 import TouchView from './touchView'
 
@@ -29,7 +29,7 @@ export default (props: Props) => {
     handleTouchStartElement,
     handleTouchMoveElement,
     handleTouchEndElement
-  } = useContext(DragDropContext)
+  } = useContext(IconDashboardContext)
   return useMemo(
     () => {
       const isMoveElement = target.index === props.index
