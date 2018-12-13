@@ -99,7 +99,11 @@ const usePageFlipper = (props: Props) => {
       transitionDuration: `${state.transitionDuration /
         1000}s`
     }),
-    [rotateY, options.perspective, state.transitionDuration]
+    [
+      rotateY,
+      transformPerspective,
+      state.transitionDuration
+    ]
   )
   const currentStyle = useMemo(
     () => ({
@@ -108,7 +112,11 @@ const usePageFlipper = (props: Props) => {
       transitionDuration: `${state.transitionDuration /
         1000}s`
     }),
-    [rotateY, options.perspective, state.transitionDuration]
+    [
+      rotateY,
+      transformPerspective,
+      state.transitionDuration
+    ]
   )
   const handleStartSwipe = useCallback(
     (event: TouchEvent<HTMLElement>) => {

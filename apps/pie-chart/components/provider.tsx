@@ -19,7 +19,7 @@ export default (props: Props) => {
   const value = usePieChart({
     ref,
     padding: 0.05,
-    centerCircleRadius: 0.6
+    centerCircleRadius: 0.3
   })
   return (
     <PieChartContext.Provider value={value}>

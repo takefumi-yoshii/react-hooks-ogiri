@@ -23,22 +23,6 @@ type Props = {
 const usePieChart = (props: Props) => {
   const [{ records, totalPoint }] = useState(getRecords())
   const [progress, updateProgress] = useState(0)
-  const handleUpdate = useCallback(() => {
-    updateProgress(prev => {
-      if (prev >= 1) return 1
-      return prev + 0.01
-    })
-  }, [])
-  useEffect(
-    () => {
-      let interval: any
-      if (progress !== 1) {
-        interval = setInterval(handleUpdate, 8)
-      }
-      return () => clearInterval(interval)
-    },
-    [progress]
-  )
   const rectSize = useMemo(
     () => {
       if (props.ref.current === null) return 0
@@ -64,9 +48,25 @@ const usePieChart = (props: Props) => {
   )
   const centerCircleRadius = useMemo(
     () => {
-      return rectSize * props.centerCircleRadius * 0.5
+      return rectSize * props.centerCircleRadius
     },
     [rectSize, props.centerCircleRadius]
+  )
+  const handleUpdate = useCallback(() => {
+    updateProgress(prev => {
+      if (prev >= 1) return 1
+      return prev + 0.01
+    })
+  }, [])
+  useEffect(
+    () => {
+      let interval: any
+      if (progress !== 1) {
+        interval = setInterval(handleUpdate, 8)
+      }
+      return () => clearInterval(interval)
+    },
+    [progress]
   )
   return {
     rectSize,

@@ -107,14 +107,14 @@ function usePullFetcher() {
               ...item,
               date: new Date(item.date)
             }))
-          ]
+          ].sort(
+            (a, b) => b.date.getTime() - a.date.getTime()
+          )
           update(_state => ({
             ..._state,
             fetched: true,
             offsetY: 0,
-            items: items.sort(
-              (a, b) => b.date.getTime() - a.date.getTime()
-            )
+            items
           }))
         } catch (error) {
           update(_state => ({
