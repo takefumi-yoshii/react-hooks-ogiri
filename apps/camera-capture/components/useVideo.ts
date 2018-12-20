@@ -53,36 +53,38 @@ function useVideo(props: Props) {
       }),
     [props.width, props.height]
   )
-  useEffect(async () => {
-    const { mediaDevices } = navigator
-    const video = props.videoRef.current
-    if (mediaDevices && video !== null) {
-      const stream = await mediaDevices.getUserMedia({
-        video: {
-          width: options.width,
-          height: options.height
-        },
-        audio: false
-      })
-      video.srcObject = stream
-      video.oncanplay = () => {
-        update(_state => ({ ..._state, canplay: true }))
+  useEffect(() => {
+    ;(async () => {
+      const { mediaDevices } = navigator
+      const video = props.videoRef.current
+      if (mediaDevices && video !== null) {
+        const stream = await mediaDevices.getUserMedia({
+          video: {
+            width: options.width,
+            height: options.height
+          },
+          audio: false
+        })
+        video.srcObject = stream
+        video.oncanplay = () => {
+          update(_state => ({ ..._state, canplay: true }))
+        }
+        video.onplay = () => {
+          update(_state => ({
+            ..._state,
+            playing: true,
+            pause: false
+          }))
+        }
+        video.onpause = () => {
+          update(_state => ({
+            ..._state,
+            playing: false,
+            pause: true
+          }))
+        }
       }
-      video.onplay = () => {
-        update(_state => ({
-          ..._state,
-          playing: true,
-          pause: false
-        }))
-      }
-      video.onpause = () => {
-        update(_state => ({
-          ..._state,
-          playing: false,
-          pause: true
-        }))
-      }
-    }
+    })()
   }, [])
   const handlePlay = useCallback(
     () => {
