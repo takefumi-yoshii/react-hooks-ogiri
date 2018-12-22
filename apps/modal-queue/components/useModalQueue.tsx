@@ -1,12 +1,19 @@
 import { useState, useMemo, useCallback } from 'react'
 import { registerModal } from './registerModal'
+// ______________________________________________________
+//
+// @ Types
 
+type State = {
+  isOpen: boolean
+  items: JSX.Element[]
+}
 // ______________________________________________________
 //
 // @ Hooks
 
 const useModalQueue = () => {
-  const [state, update] = useState({
+  const [state, update] = useState<State>({
     isOpen: false,
     items: []
   })
