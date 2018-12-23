@@ -83,22 +83,6 @@ const useDragDropContainer = (props: Props) => {
       })
     }
   })
-  useEffect(
-    () => {
-      update(_state => ({
-        ..._state,
-        hitPoints: props.records.map((record, index) => {
-          const x = props.left + props.itemWidth * 0.5
-          const y =
-            index * props.itemHeight +
-            props.top +
-            props.itemHeight * 0.5
-          return { x, y }
-        })
-      }))
-    },
-    [props.itemWidth]
-  )
   const handleStart = useCallback(
     (props: HandleStartProps) => {
       update(_state => {
@@ -222,6 +206,51 @@ const useDragDropContainer = (props: Props) => {
     },
     [state.isMouseDown, state.target]
   )
+  const handleEndMove = useCallback(() => {
+    update(_state => {
+      if (_state.target.index === -1) return _state
+      return {
+        ..._state,
+        isMouseDown: false,
+        target: {
+          index: -1,
+          startRectPoint: { x: 0, y: 0 },
+          pointOffset: { x: 0, y: 0 },
+          startMousePoint: { x: 0, y: 0 }
+        }
+      }
+    })
+  }, [])
+  const handleTouchEndElement = useCallback(
+    (event: TouchEvent<HTMLElement>) => {
+      event.persist()
+      handleEndMove()
+    },
+    []
+  )
+  const handleMouseUpElement = useCallback(
+    (event: MouseEvent<HTMLElement>) => {
+      event.persist()
+      handleEndMove()
+    },
+    []
+  )
+  useEffect(
+    () => {
+      update(_state => ({
+        ..._state,
+        hitPoints: props.records.map((record, index) => {
+          const x = props.left + props.itemWidth * 0.5
+          const y =
+            index * props.itemHeight +
+            props.top +
+            props.itemHeight * 0.5
+          return { x, y }
+        })
+      }))
+    },
+    [props.itemWidth]
+  )
   useEffect(
     () => {
       update(_state => {
@@ -251,35 +280,6 @@ const useDragDropContainer = (props: Props) => {
       })
     },
     [state.hitIndex]
-  )
-  const handleEndMove = useCallback(() => {
-    update(_state => {
-      if (_state.target.index === -1) return _state
-      return {
-        ..._state,
-        isMouseDown: false,
-        target: {
-          index: -1,
-          startRectPoint: { x: 0, y: 0 },
-          pointOffset: { x: 0, y: 0 },
-          startMousePoint: { x: 0, y: 0 }
-        }
-      }
-    })
-  }, [])
-  const handleTouchEndElement = useCallback(
-    (event: TouchEvent<HTMLElement>) => {
-      event.persist()
-      handleEndMove()
-    },
-    []
-  )
-  const handleMouseUpElement = useCallback(
-    (event: MouseEvent<HTMLElement>) => {
-      event.persist()
-      handleEndMove()
-    },
-    []
   )
   return {
     isMouseDown: state.isMouseDown,
