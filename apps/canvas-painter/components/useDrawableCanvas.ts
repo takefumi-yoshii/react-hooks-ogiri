@@ -97,7 +97,7 @@ function useDrawableCanvas(props: Props) {
       event.persist()
       update(_state => ({
         ..._state,
-        fillSize: event.target.value
+        fillSize: Number(event.target.value)
       }))
     },
     [state.fillSize]
