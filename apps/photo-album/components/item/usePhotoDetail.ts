@@ -15,10 +15,24 @@ type Options = {
   transitionDuration: number
 }
 type Props = Partial<Options>
+type State = {
+  isOpen: boolean
+  isOpened: boolean
+  defaultRect: Partial<DOMRect> | null
+  bgRect: Partial<DOMRect> | null
+  photoRect: Partial<DOMRect> | null
+}
 // ______________________________________________________
 //
 // @ Defaults
 
+const defaultState = (): State => ({
+  isOpen: false,
+  isOpened: false,
+  defaultRect: null,
+  bgRect: null,
+  photoRect: null
+})
 const defaultOptions = (): Options => ({
   transitionDuration: 400
 })
@@ -27,17 +41,7 @@ const defaultOptions = (): Options => ({
 // @ Hooks
 
 const usePhotoDetail = (props: Props) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isOpened, setIsOpened] = useState(false)
-  const [defaultRect, setDefaultRect] = useState<
-    Partial<DOMRect>
-  >(null!)
-  const [bgRect, setBgRect] = useState<Partial<DOMRect>>(
-    null!
-  )
-  const [photoRect, setPhotoRect] = useState<
-    Partial<DOMRect>
-  >(null!)
+  const [state, update] = useState<State>(defaultState())
   const options = useMemo(
     (): Options =>
       merge(defaultOptions(), {
@@ -47,27 +51,27 @@ const usePhotoDetail = (props: Props) => {
   )
   const bgStyle = useMemo(
     () =>
-      bgRect === null
+      state.bgRect === null
         ? {}
         : {
-            width: `${bgRect.width}px`,
-            height: `${bgRect.height}px`,
-            top: `${bgRect.top}px`,
-            left: `${bgRect.left}px`
+            width: `${state.bgRect.width}px`,
+            height: `${state.bgRect.height}px`,
+            top: `${state.bgRect.top}px`,
+            left: `${state.bgRect.left}px`
           },
-    [bgRect]
+    [state.bgRect]
   )
   const photoStyle = useMemo(
     () =>
-      photoRect === null
+      state.photoRect === null
         ? {}
         : {
-            width: `${photoRect.width}px`,
-            height: `${photoRect.height}px`,
-            top: `${photoRect.top}px`,
-            left: `${photoRect.left}px`
+            width: `${state.photoRect.width}px`,
+            height: `${state.photoRect.height}px`,
+            top: `${state.photoRect.top}px`,
+            left: `${state.photoRect.left}px`
           },
-    [photoRect]
+    [state.photoRect]
   )
   const handleTouchMove = useCallback(
     (event: TouchEvent) => {
@@ -83,39 +87,48 @@ const usePhotoDetail = (props: Props) => {
         handleTouchMove,
         { passive: false }
       )
-      setDefaultRect(rect)
-      setPhotoRect(rect)
-      setBgRect(rect)
-      setIsOpen(true)
+      update(_state => ({
+        ..._state,
+        defaultRect: rect,
+        photoRect: rect,
+        bgRect: rect,
+        isOpen: true
+      }))
       setTimeout(() => {
-        setPhotoRect({
-          width: window.innerWidth,
-          height: window.innerWidth,
-          top: 0,
-          left: 0
-        })
-        setBgRect({
-          width: window.innerWidth,
-          height: window.innerHeight,
-          top: 0,
-          left: 0
-        })
+        update(_state => ({
+          ..._state,
+          photoRect: {
+            width: window.innerWidth,
+            height: window.innerWidth,
+            top: 0,
+            left: 0
+          },
+          bgRect: {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            top: 0,
+            left: 0
+          }
+        }))
       }, 16)
       setTimeout(() => {
-        setIsOpened(true)
+        update(_state => ({ ..._state, isOpened: true }))
       }, options.transitionDuration)
     },
-    [bgRect, photoRect, options]
+    [state.bgRect, state.photoRect, options]
   )
   const handleClose = useCallback(
     (e: MouseEvent<HTMLElement>) => {
-      setIsOpened(false)
+      update(_state => ({ ..._state, isOpened: false }))
       setTimeout(() => {
-        setPhotoRect(defaultRect)
-        setBgRect(defaultRect)
+        update(_state => ({
+          ..._state,
+          photoRect: _state.defaultRect,
+          bgRect: _state.defaultRect
+        }))
       }, 16)
       setTimeout(() => {
-        setIsOpen(false)
+        update(_state => ({ ..._state, isOpen: false }))
         window.removeEventListener(
           'touchmove',
           handleTouchMove as any,
@@ -123,11 +136,11 @@ const usePhotoDetail = (props: Props) => {
         )
       }, options.transitionDuration)
     },
-    [bgRect, photoRect, options]
+    [state.bgRect, state.photoRect, options]
   )
   return {
-    isOpen,
-    isOpened,
+    isOpen: state.isOpen,
+    isOpened: state.isOpened,
     bgStyle,
     photoStyle,
     handleOpen,
