@@ -27,7 +27,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     setMounted(true)

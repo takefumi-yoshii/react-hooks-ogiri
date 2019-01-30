@@ -30,7 +30,7 @@ const Line = (props: LineProps) => (
   />
 )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g>
     {props.points.map((point, index) => (
       <Line

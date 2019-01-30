@@ -13,7 +13,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     <RippleButton
       width={'180px'}

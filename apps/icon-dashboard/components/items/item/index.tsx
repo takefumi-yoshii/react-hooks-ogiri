@@ -26,7 +26,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <props.Container
     record={props.record}
     index={props.index}

@@ -18,7 +18,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     <div className="menu" onClick={props.handleToggleOpen}>
       <SVGInline svg={require('./assets/menu.svg')} />

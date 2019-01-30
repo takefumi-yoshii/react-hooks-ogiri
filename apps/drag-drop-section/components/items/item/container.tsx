@@ -12,13 +12,12 @@ export type Props = {
   index: number
   width: number
   height: number
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ Container
 
-export default (props: Props) => {
+const Container: React.FC<Props> = props => {
   const {
     isMouseDown,
     target,
@@ -94,3 +93,5 @@ export default (props: Props) => {
     ]
   )
 }
+
+export default Container

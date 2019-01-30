@@ -19,7 +19,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const columnCount = 28
   const max = 100
   const width = 640

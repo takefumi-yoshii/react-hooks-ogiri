@@ -19,7 +19,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     <h2>{(props.totalPoint * props.progress) >> 0}</h2>
     {props.records.map((record, index) => (

@@ -14,7 +14,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const [current, setCurrent] = useState(0)
   return (
     <div className={props.className}>

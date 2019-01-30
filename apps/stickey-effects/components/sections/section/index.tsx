@@ -31,7 +31,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <StickyWrapper
     id={`section${props.index}`}
     className={props.className}

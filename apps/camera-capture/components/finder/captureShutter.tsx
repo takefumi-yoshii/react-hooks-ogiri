@@ -15,7 +15,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     <button onClick={props.handleCapture}>
       <SVGInline svg={require('./assets/camera.svg')} />

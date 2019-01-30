@@ -14,13 +14,12 @@ type Props = {
   verticalCount?: number
   holizontalCount?: number
   className?: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLDivElement)
   const value = useIconDashboard({
     ref,

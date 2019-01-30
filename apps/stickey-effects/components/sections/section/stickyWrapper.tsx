@@ -12,7 +12,6 @@ import {
 type Props = {
   onEnter: () => void
   onLeave: () => void
-  children?: React.ReactNode
   className?: string
   id: string
 } & Partial<Options>
@@ -20,7 +19,7 @@ type Props = {
 //
 // @ View
 
-export default (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLDivElement)
   useStickyWrapper({
     ref,
@@ -38,3 +37,5 @@ export default (props: Props) => {
     </div>
   )
 }
+
+export default View

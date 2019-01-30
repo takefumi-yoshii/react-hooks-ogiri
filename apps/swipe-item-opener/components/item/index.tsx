@@ -17,7 +17,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <SwipeItemOpener
     render={isOpend => (
       <div className={props.className}>

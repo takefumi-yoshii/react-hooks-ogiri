@@ -20,7 +20,7 @@ type ContainerProps = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <span className={props.className} style={props.style} />
 )
 // ______________________________________________________

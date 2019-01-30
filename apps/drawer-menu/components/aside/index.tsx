@@ -28,7 +28,7 @@ type ContainerProps = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className} style={props.nodeStyle}>
     <div
       className="container"

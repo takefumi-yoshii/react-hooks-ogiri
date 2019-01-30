@@ -10,13 +10,12 @@ type Props = {
   width: number
   height: number
   onMouseLeave: (event: MouseEvent) => void
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <svg
     viewBox={`0 0 ${props.width} ${props.height}`}
     width={props.width}
@@ -30,7 +29,7 @@ const View = (props: Props) => (
 //
 // @ Container
 
-export default (props: { children?: React.ReactNode }) => {
+const Container: React.FC<{}> = props => {
   const { svgRect, handleLeaveHitarea } = useContext(
     LineChartContext
   )
@@ -47,3 +46,5 @@ export default (props: { children?: React.ReactNode }) => {
     [svgRect, handleLeaveHitarea]
   )
 }
+
+export default Container

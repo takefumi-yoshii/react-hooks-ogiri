@@ -33,7 +33,7 @@ const Circle = (props: CircleProps) => (
   />
 )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <>
     <circle
       cx={props.center}

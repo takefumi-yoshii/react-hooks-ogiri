@@ -39,7 +39,7 @@ const Line = (props: LineProps) =>
     []
   )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g>
     {props.bgRowLinesPoints.map((point, index) => (
       <Line

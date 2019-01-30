@@ -14,7 +14,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const [addressLabel, setAddressLabel] = useState(
     '...取得しています'
   )

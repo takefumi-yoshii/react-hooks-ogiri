@@ -13,13 +13,12 @@ type Props = {
   loadCompleted: boolean
   onTransitionEnd: () => void
   className?: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     {props.loaded && <p className="photo" />}
     {!props.loadCompleted &&

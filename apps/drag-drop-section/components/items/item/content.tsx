@@ -15,7 +15,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     <Icon priority={props.record.priority} />
     <h3>{props.record.title}</h3>

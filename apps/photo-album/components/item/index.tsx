@@ -21,7 +21,7 @@ type Props = {
 
 const transitionDuration = 400
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const {
     isOpen,
     isOpened,

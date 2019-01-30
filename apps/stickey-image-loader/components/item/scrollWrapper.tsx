@@ -12,14 +12,13 @@ import {
 type Props = {
   onEnter: () => void
   onLeave: () => void
-  children?: React.ReactNode
   className?: string
 } & Partial<Options>
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLDivElement)
   useScrollWrapper({
     ref,
@@ -33,3 +32,5 @@ export default (props: Props) => {
     </div>
   )
 }
+
+export default View

@@ -44,7 +44,7 @@ const Rect = (props: RectProps) =>
     [props.chartColumnWidth]
   )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g className={props.className}>
     {props.chartPoints.map((point, index) => (
       <Rect

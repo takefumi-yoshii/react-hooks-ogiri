@@ -22,7 +22,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     {props.records.map((record, index) => {
       const elementIndex = props.indexMapping.findIndex(

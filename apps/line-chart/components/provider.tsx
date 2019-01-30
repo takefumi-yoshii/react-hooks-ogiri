@@ -11,13 +11,12 @@ type Props = {
   width: number
   height: number
   records: Record[]
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
+const Provider: React.FC<Props> = props => {
   const value = useLineChart({
     records: props.records,
     width: props.width,
@@ -29,3 +28,5 @@ export default (props: Props) => {
     </LineChartContext.Provider>
   )
 }
+
+export default Provider

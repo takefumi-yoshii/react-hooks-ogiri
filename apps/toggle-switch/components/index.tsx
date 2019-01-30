@@ -12,7 +12,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     {records.map((record, index) => (
       <div key={index} className="item">

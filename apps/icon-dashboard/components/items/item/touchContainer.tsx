@@ -14,13 +14,12 @@ export type Props = {
   x: number
   y: number
   className?: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const {
     isMouseDown,
     target,

@@ -15,7 +15,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     {times(props.count).map(index => (
       <Item key={index} index={index} />

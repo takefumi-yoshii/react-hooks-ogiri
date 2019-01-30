@@ -16,7 +16,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g>
     <line
       x1={props.x}
