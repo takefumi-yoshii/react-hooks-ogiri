@@ -2,19 +2,11 @@ import * as React from 'react'
 import { useRef } from 'react'
 import { PieChartContext } from './contexts'
 import { usePieChart } from './usePieChart'
-
-// ______________________________________________________
-//
-// @ Types
-
-type Props = {
-  children?: React.ReactNode
-}
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
+const Provider: React.FC<{}> = props => {
   const ref = useRef(null! as HTMLDivElement)
   const value = usePieChart({
     ref,
@@ -27,3 +19,5 @@ export default (props: Props) => {
     </PieChartContext.Provider>
   )
 }
+
+export default Provider

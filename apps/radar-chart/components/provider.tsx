@@ -10,13 +10,12 @@ import { useRadarChart } from './useRadarChart'
 type Props = {
   padding?: number
   itemLabelIeject?: number
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
+const Provider: React.FC<Props> = props => {
   const ref = useRef(null! as HTMLDivElement)
   const value = useRadarChart({
     ref,
@@ -29,3 +28,5 @@ export default (props: Props) => {
     </RadarChartContext.Provider>
   )
 }
+
+export default Provider

@@ -40,7 +40,7 @@ const Rect = (props: RectProps) =>
     [props.bound, props.index]
   )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g className={props.className}>
     {props.hitareaBounds.map((bound, index) => (
       <Rect

@@ -14,13 +14,12 @@ type Props = {
 type ContainerProps = {
   isHide: boolean
   imgSrc: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <p className={props.className} style={props.nodeStyle} />
 )
 // ______________________________________________________
@@ -43,7 +42,7 @@ const StyledView = styled(View)`
 //
 // @ Container
 
-export default (props: ContainerProps) => {
+const Container: React.FC<ContainerProps> = props => {
   const nodeStyle = useMemo(
     () => {
       return props.isHide
@@ -64,3 +63,5 @@ export default (props: ContainerProps) => {
     [nodeStyle]
   )
 }
+
+export default Container

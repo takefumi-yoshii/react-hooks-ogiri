@@ -17,7 +17,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const nodeRef = useRef({} as HTMLDivElement)
   const [items, updateItems] = useState<JSX.Element[]>([])
   useEffect(() => {

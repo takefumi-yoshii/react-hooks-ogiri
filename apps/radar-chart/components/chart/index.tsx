@@ -9,13 +9,12 @@ import { RadarChartContext } from '../context'
 type Props = {
   rectSize: number
   className?: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <svg
     viewBox={`0 0 ${props.rectSize} ${props.rectSize}`}
     width={props.rectSize}
@@ -31,10 +30,12 @@ const View = (props: Props) => (
 //
 // @ Container
 
-export default (props: { children?: React.ReactNode }) => {
+const Container: React.FC<{}> = props => {
   const { rectSize } = useContext(RadarChartContext)
   return useMemo(
     () => <View rectSize={rectSize}>{props.children}</View>,
     [rectSize]
   )
 }
+
+export default Container

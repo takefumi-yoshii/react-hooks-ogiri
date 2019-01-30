@@ -11,14 +11,13 @@ import {
 
 type Props = {
   toggleClassName: string
-  children?: React.ReactNode
   className?: string
 } & Partial<Options>
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLDivElement)
   usePallalaxSection({
     ref,
@@ -33,3 +32,5 @@ export default (props: Props) => {
     </section>
   )
 }
+
+export default View

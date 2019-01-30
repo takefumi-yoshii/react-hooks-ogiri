@@ -20,7 +20,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     <p className="dateLabel">{props.dateLabel}</p>
     <p

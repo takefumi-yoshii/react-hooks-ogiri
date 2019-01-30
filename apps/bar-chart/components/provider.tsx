@@ -14,13 +14,12 @@ type Props = {
   width: number
   height: number
   multipleRecords: Record[][]
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
-// @ View
+// @ Provider
 
-export default (props: Props) => {
+const Provider: React.FC<Props> = props => {
   const value = useBarChart({
     rowCount: props.rowCount,
     columnCount: props.columnCount,
@@ -35,3 +34,5 @@ export default (props: Props) => {
     </BarChartContext.Provider>
   )
 }
+
+export default Provider

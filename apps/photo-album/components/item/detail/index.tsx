@@ -22,7 +22,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   return (
     <div className={props.className}>
       {!props.isOpened &&

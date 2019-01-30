@@ -11,13 +11,12 @@ type Props = {
   subTitle: string
   isHide: boolean
   className?: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLDivElement)
   const [height, setHeight] = useState<number | null>(null)
   useEffect(() => {

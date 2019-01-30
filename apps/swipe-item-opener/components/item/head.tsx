@@ -16,7 +16,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     <h3 className="title">{props.title}</h3>
     <p className="dateLabel">{props.dateLabel}</p>

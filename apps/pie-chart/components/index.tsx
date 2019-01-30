@@ -15,7 +15,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <Provider>
     <div className={props.className}>
       <div className="container">

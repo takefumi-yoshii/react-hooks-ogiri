@@ -21,7 +21,6 @@ type Options = {
 }
 type Props = {
   className?: string
-  children?: React.ReactNode
 } & Partial<Options>
 // ______________________________________________________
 //
@@ -33,9 +32,9 @@ const defaultOptions = (): Options => ({
 })
 // ______________________________________________________
 //
-// @ Hooks
+// @ Wrapper
 
-export default (props: Props) => {
+const Wrapper: React.FC<Props> = props => {
   const { updateCoefficient } = useContext(CTX)
   const options = useMemo(
     (): Options =>
@@ -64,3 +63,5 @@ export default (props: Props) => {
     <div className={props.className}>{props.children}</div>
   )
 }
+
+export default Wrapper

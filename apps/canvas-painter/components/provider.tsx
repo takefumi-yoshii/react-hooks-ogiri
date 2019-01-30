@@ -2,20 +2,11 @@ import * as React from 'react'
 import { useRef } from 'react'
 import { DrawableCanvasContext } from './contexts'
 import { useDrawableCanvas } from './useDrawableCanvas'
-
-// ______________________________________________________
-//
-// @ Types
-
-type Props = {
-  children?: React.ReactNode
-}
-
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
+const Provider: React.FC<{}> = props => {
   const canvasRef = useRef({} as HTMLCanvasElement)
   const value = useDrawableCanvas({ ref: canvasRef })
   return (
@@ -24,3 +15,5 @@ export default (props: Props) => {
     </DrawableCanvasContext.Provider>
   )
 }
+
+export default Provider

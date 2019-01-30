@@ -11,7 +11,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <PallalaxSection
     className={props.className}
     toggleClassName={'inArea'}

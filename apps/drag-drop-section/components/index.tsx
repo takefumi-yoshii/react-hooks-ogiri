@@ -14,7 +14,7 @@ type Props = { className?: string }
 // @ View
 
 const height = 60
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLDivElement)
   const [width, setWidth] = useState(0)
   useEffect(() => {

@@ -38,7 +38,7 @@ const Circle = (props: CircleProps) =>
     [props.current]
   )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g className={props.className}>
     {props.chartPoints.map((point, index) => (
       <Circle

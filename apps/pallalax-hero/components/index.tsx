@@ -11,13 +11,12 @@ import Footer from '../../components/pixabayFooter'
 
 type Props = {
   className?: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <Provider>
     <Wrapper className={props.className}>
       <Head

@@ -12,13 +12,12 @@ type Props = {
   onTouchMove: (event: TouchEvent<HTMLElement>) => void
   onTouchEnd: (event: TouchEvent<HTMLElement>) => void
   className?: string
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div
     className={props.className}
     style={props.style}

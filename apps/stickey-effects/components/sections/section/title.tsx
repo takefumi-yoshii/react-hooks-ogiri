@@ -19,7 +19,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <h2 className={props.className}>
     <span className="text">{props.title}</span>
     <TitleNav

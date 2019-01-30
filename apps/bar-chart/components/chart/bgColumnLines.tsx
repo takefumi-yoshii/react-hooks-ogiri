@@ -36,7 +36,7 @@ const Line = (props: LineProps) =>
     []
   )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g>
     {props.chartPoints.map((point, index) => (
       <Line

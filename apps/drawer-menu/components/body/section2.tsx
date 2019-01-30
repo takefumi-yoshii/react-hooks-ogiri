@@ -10,7 +10,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <section className={props.className}>
     <img
       src={require('./assets/parrot.jpg')}

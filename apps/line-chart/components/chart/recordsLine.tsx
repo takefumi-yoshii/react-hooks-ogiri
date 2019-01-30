@@ -13,7 +13,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <path d={props.d} stroke="#fff" fill="none" />
 )
 // ______________________________________________________

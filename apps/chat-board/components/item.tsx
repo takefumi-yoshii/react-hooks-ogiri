@@ -19,7 +19,7 @@ export type Item = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const [style, updateStyle] = useState({
     opacity: 0,
     transform: 'translateX(10px)'

@@ -15,7 +15,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const [value, setValue] = useState('')
   return (
     <form

@@ -18,14 +18,13 @@ type Props = {
   effectDuration?: number
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
   className?: string
-  children?: React.ReactNode
 }
 
 // ______________________________________________________
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLButtonElement)
   const {
     handleMouseDown,

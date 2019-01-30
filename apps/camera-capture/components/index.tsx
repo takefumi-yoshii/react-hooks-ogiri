@@ -18,7 +18,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const videoRef = useRef({} as HTMLVideoElement)
   const canvasRef = useRef({} as HTMLCanvasElement)
   const width = 640

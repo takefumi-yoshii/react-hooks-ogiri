@@ -13,7 +13,7 @@ type Props = { className?: string }
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const { state } = useMailFetcher()
   if (!state.fetched) return <div>loading...</div>
   if (state.error) return <div>Error!</div>

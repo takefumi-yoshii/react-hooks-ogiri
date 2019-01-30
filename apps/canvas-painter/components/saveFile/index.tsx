@@ -27,7 +27,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <form
     className={props.className}
     onSubmit={event => {

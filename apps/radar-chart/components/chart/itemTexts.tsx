@@ -29,7 +29,7 @@ const Text = (props: TextProps) => (
   </text>
 )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <g>
     {props.points.map((point, index) => (
       <Text key={index} point={point} />

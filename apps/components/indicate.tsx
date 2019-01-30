@@ -35,7 +35,7 @@ const Figure = (props: { isCurrent: boolean }) =>
     [props.isCurrent]
   )
 
-const View = (props: Props) => (
+const View: React.FC<Props> = props => (
   <div className={props.className}>
     {times(props.count).map(i => (
       <Figure key={i} isCurrent={props.current === i} />

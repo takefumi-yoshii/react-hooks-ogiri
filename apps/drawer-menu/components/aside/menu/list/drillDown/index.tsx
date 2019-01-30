@@ -24,7 +24,7 @@ type Props = {
 //
 // @ View
 
-const View = (props: Props) => {
+const View: React.FC<Props> = props => {
   const ref = useRef({} as HTMLUListElement)
   const { style, handleOpen } = useDrillDown({ ref })
   const handleClickTitle = useCallback(

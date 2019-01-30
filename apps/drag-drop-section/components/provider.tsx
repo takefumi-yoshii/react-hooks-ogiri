@@ -13,13 +13,12 @@ type Props = {
   left: number
   itemWidth: number
   itemHeight: number
-  children?: React.ReactNode
 }
 // ______________________________________________________
 //
 // @ View
 
-export default (props: Props) => {
+const Provider: React.FC<Props> = props => {
   const value = useDragDropContainer({
     records: props.records,
     top: props.top,
@@ -33,3 +32,5 @@ export default (props: Props) => {
     </IconDashboardContext.Provider>
   )
 }
+
+export default Provider
