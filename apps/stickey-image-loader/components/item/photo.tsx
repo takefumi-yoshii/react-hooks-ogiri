@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useMemo } from 'react'
 import styled from 'styled-components'
 import Loading from './loading'
 
@@ -21,16 +20,12 @@ type Props = {
 const View: React.FC<Props> = props => (
   <div className={props.className}>
     {props.loaded && <p className="photo" />}
-    {!props.loadCompleted &&
-      useMemo(
-        () => (
-          <Loading
-            loaded={props.loaded}
-            onTransitionEnd={props.onTransitionEnd}
-          />
-        ),
-        [props.loadCompleted, props.loaded]
-      )}
+    {!props.loadCompleted && (
+      <Loading
+        loaded={props.loaded}
+        onTransitionEnd={props.onTransitionEnd}
+      />
+    )}
   </div>
 )
 // ______________________________________________________

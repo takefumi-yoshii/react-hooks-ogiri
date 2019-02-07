@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useMemo, MouseEvent, CSSProperties } from 'react'
+import { MouseEvent, CSSProperties } from 'react'
 import styled from 'styled-components'
 import Contents from './contents/index'
 
@@ -25,35 +25,27 @@ type Props = {
 const View: React.FC<Props> = props => {
   return (
     <div className={props.className}>
-      {!props.isOpened &&
-        useMemo(
-          () => (
-            <>
-              <div className="bg" style={props.bgStyle} />
-              <div
-                className="photo"
-                style={props.photoStyle}
-              >
-                {props.photoComponent}
-              </div>
-            </>
-          ),
-          [props.photoStyle, props.bgStyle]
-        )}
-      {props.isOpened &&
-        useMemo(
-          () => (
-            <Contents
-              title={props.title}
-              body={props.body}
-              photoStyle={props.photoStyle}
-              photoComponent={props.photoComponent}
-              transitionDuration={props.transitionDuration}
-              handleClose={props.handleClose}
-            />
-          ),
-          [props.isOpened]
-        )}
+      {!props.isOpened && (
+        <>
+          <div className="bg" style={props.bgStyle} />
+          <div
+            className="photo"
+            style={props.photoStyle}
+          >
+            {props.photoComponent}
+          </div>
+        </>
+      )}
+      {props.isOpened && (
+        <Contents
+          title={props.title}
+          body={props.body}
+          photoStyle={props.photoStyle}
+          photoComponent={props.photoComponent}
+          transitionDuration={props.transitionDuration}
+          handleClose={props.handleClose}
+        />
+      )}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { useContext, useMemo } from 'react'
+import { useContext } from 'react'
 import { PieChartContext } from '../contexts'
 import { Record } from '../records'
 
@@ -68,15 +68,12 @@ export default () => {
     rectSize
   } = useContext(PieChartContext)
   if (rectSize === 0) return <div />
-  return useMemo(
-    () => (
-      <StyledView
-        records={records}
-        totalPoint={totalPoint}
-        rectSize={rectSize}
-        progress={progress}
-      />
-    ),
-    [records, totalPoint, progress]
+  return (
+    <StyledView
+      records={records}
+      totalPoint={totalPoint}
+      rectSize={rectSize}
+      progress={progress}
+    />
   )
 }
