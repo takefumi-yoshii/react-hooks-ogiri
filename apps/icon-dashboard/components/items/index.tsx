@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useContext, useMemo } from 'react'
+import { useContext } from 'react'
 import { IconDashboardContext } from '../contexts'
 import { Record } from '../records'
 import Item from './item/index'
@@ -60,25 +60,15 @@ export default () => {
     indexMapping
   } = useContext(IconDashboardContext)
   if (itemWidth === 0) return <div />
-  return useMemo(
-    () => (
-      <View
-        records={records}
-        width={itemWidth}
-        height={itemHeight}
-        itemPoints={itemPoints}
-        holizontalCount={holizontalCount}
-        verticalCount={verticalCount}
-        indexMapping={indexMapping}
-      />
-    ),
-    [
-      records,
-      itemWidth,
-      itemHeight,
-      holizontalCount,
-      verticalCount,
-      indexMapping
-    ]
+  return (
+    <View
+      records={records}
+      width={itemWidth}
+      height={itemHeight}
+      itemPoints={itemPoints}
+      holizontalCount={holizontalCount}
+      verticalCount={verticalCount}
+      indexMapping={indexMapping}
+    />
   )
 }

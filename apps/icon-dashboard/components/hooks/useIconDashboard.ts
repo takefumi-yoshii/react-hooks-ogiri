@@ -1,4 +1,4 @@
-import { useState, useMemo, RefObject } from 'react'
+import { useState, RefObject } from 'react'
 // @ts-ignore
 import throttle from 'lodash.throttle'
 // @ts-ignore
@@ -62,15 +62,11 @@ const defaultState = (): State => ({
 // @ Hooks
 
 const useIconDashboard = (props: Props) => {
-  const rotateTileContainer = useMemo(
-    () =>
-      useRotateTileContainer({
-        ref: props.ref,
-        verticalCount: props.verticalCount,
-        holizontalCount: props.holizontalCount
-      }),
-    [props]
-  )
+  const rotateTileContainer = useRotateTileContainer({
+    ref: props.ref,
+    verticalCount: props.verticalCount,
+    holizontalCount: props.holizontalCount
+  })
   const [state, update] = useState<State>({
     ...defaultState(),
     ...{

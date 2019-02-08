@@ -58,15 +58,11 @@ const useRotateTileContainer = (props: Props) => {
     },
     [window.orientation]
   )
-  const tileContainer = useMemo(
-    () =>
-      useTileContainer({
-        ref: props.ref,
-        verticalCount,
-        holizontalCount
-      }),
-    [verticalCount, holizontalCount]
-  )
+  const tileContainer = useTileContainer({
+    ref: props.ref,
+    verticalCount,
+    holizontalCount
+  })
   return {
     ...tileContainer,
     holizontalCount,
