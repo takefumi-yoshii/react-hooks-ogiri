@@ -33,26 +33,26 @@
     "prettier": "prettier \"./**/*.ts\" \"./**/*.tsx\" --write"
   },
   "dependencies": {
-    "lodash.merge": "^4.6.1",
+    "lodash.merge": "^4.6.2",
     "lodash.throttle": "^4.1.1",
-    "react": "^16.8.1",
-    "react-async-script": "^1.0.0",
-    "react-dom": "^16.8.1",
+    "react": "^16.8.6",
+    "react-async-script": "^1.1.1",
+    "react-dom": "^16.8.6",
     "react-svg-inline": "^2.1.1",
-    "styled-components": "^4.0.3",
+    "styled-components": "^4.3.2",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@types/googlemaps": "^3.30.16",
-    "@types/lodash.merge": "^4.6.4",
-    "@types/lodash.throttle": "^4.1.4",
-    "@types/react": "^16.8.2",
-    "@types/react-dom": "^16.8.0",
-    "@types/styled-components": "^4.0.3",
-    "parcel-bundler": "^1.11.0",
-    "parcel-plugin-inlinesvg": "^0.0.14",
-    "prettier": "^1.14.3",
-    "typescript": "^3.1.6"
+    "@types/googlemaps": "^3.37.0",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/lodash.throttle": "^4.1.6",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "@types/styled-components": "^4.1.18",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-inlinesvg": "^0.1.1",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.3"
   },
   "prettier": {
     "semi": false,
