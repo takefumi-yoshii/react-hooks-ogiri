@@ -49,7 +49,7 @@
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
     "@types/styled-components": "^4.1.18",
-    "parcel-bundler": "^1.12.3",
+    "parcel-bundler": "^1.12.4",
     "parcel-plugin-inlinesvg": "^0.1.1",
     "prettier": "^1.18.2",
     "typescript": "^3.5.3"
